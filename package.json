@@ -2,7 +2,7 @@
   "name": "wynntils-function-tools",
   "displayName": "Wynntils Functions Tools",
   "description": "Wynntils Info boxes language support",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.50.0"
   },
@@ -12,6 +12,10 @@
   "categories": [
     "Programming Languages"
   ],
+  "publisher": "TeamWynntils",
+  "repository": {
+    "url": "https://github.com/DevChromium/wynntils-functions-tools"
+  },
   "activationEvents": [
     "onLanguage:wynntils",
     "onCommand:wynntils.compileToFunctions"
