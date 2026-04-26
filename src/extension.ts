@@ -2,6 +2,7 @@ import * as path from "path";
 import * as vscode from "vscode";
 import { LanguageClient, LanguageClientOptions, ServerOptions, TransportKind } from "vscode-languageclient/node";
 import { compileSupersetToWynntils } from "./compile";
+import { formatWynntilsDocument } from "./formatter";
 
 let client: LanguageClient;
 
@@ -34,6 +35,19 @@ export function activate(ctx: vscode.ExtensionContext) {
         vscode.window.showWarningMessage(`Compiled with ${res.errors.length} issue(s). Check diagnostics in the source document.`);
       }
     })
+  );
+
+  const formatterProvider: vscode.DocumentFormattingEditProvider = {
+    provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
+      const original = document.getText();
+      const formatted = formatWynntilsDocument(original);
+      const fullRange = new vscode.Range(document.positionAt(0), document.positionAt(original.length));
+      return [vscode.TextEdit.replace(fullRange, formatted)];
+    }
+  };
+
+  ctx.subscriptions.push(
+    vscode.languages.registerDocumentFormattingEditProvider("wynntils", formatterProvider)
   );
 }
 export function deactivate() { return client?.stop(); }
