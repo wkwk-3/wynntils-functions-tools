@@ -2,1288 +2,6 @@ export type WynntilsArg = { name: string; type: string; required: boolean; defau
 export type WynntilsFn = { name: string; aliases: string[]; description: string; return: string; args: WynntilsArg[] };
 export const WYNNTILS_FUNCS: WynntilsFn[] = [
   {
-    "name": "at_cap",
-    "aliases": [],
-    "description": "Is the capped value at maximum?",
-    "return": "Boolean",
-    "args": [
-      {
-        "name": "capped",
-        "type": "CappedValue",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "cap",
-    "aliases": [],
-    "description": "The maximum value from this capped value",
-    "return": "Integer",
-    "args": [
-      {
-        "name": "capped",
-        "type": "CappedValue",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "capped",
-    "aliases": [],
-    "description": "A capped value from current value and cap",
-    "return": "CappedValue",
-    "args": [
-      {
-        "name": "current",
-        "type": "Number",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "cap",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "current",
-    "aliases": [
-      "curr"
-    ],
-    "description": "The current value from this capped value",
-    "return": "Integer",
-    "args": [
-      {
-        "name": "capped",
-        "type": "CappedValue",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "percentage",
-    "aliases": [
-      "pct"
-    ],
-    "description": "The percentage (0-100) of this capped value",
-    "return": "Double",
-    "args": [
-      {
-        "name": "capped",
-        "type": "CappedValue",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "remaining",
-    "aliases": [
-      "rem"
-    ],
-    "description": "The difference between cap and current value",
-    "return": "Integer",
-    "args": [
-      {
-        "name": "capped",
-        "type": "CappedValue",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "blink_shader",
-    "aliases": [],
-    "description": "Returns color value that triggers Wynncraft's blink text shader",
-    "return": "CustomColor",
-    "args": []
-  },
-  {
-    "name": "brightness_shift",
-    "aliases": [],
-    "description": "Shifts the brightness of provided color",
-    "return": "CustomColor",
-    "args": [
-      {
-        "name": "color",
-        "type": "CustomColor",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "degree",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "fade_shader",
-    "aliases": [],
-    "description": "Returns color value that triggers Wynncraft's fade text shader",
-    "return": "CustomColor",
-    "args": []
-  },
-  {
-    "name": "from_hex",
-    "aliases": [],
-    "description": "Returns a color value based on provided hex argument",
-    "return": "CustomColor",
-    "args": [
-      {
-        "name": "hex",
-        "type": "String",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "from_rgb",
-    "aliases": [],
-    "description": "Returns a color value based on provided RGB arguments",
-    "return": "CustomColor",
-    "args": [
-      {
-        "name": "r",
-        "type": "Integer",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "g",
-        "type": "Integer",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "b",
-        "type": "Integer",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "from_rgb_percent",
-    "aliases": [],
-    "description": "Returns a color value based on provided RGB arguments",
-    "return": "CustomColor",
-    "args": [
-      {
-        "name": "r",
-        "type": "Number",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "g",
-        "type": "Number",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "b",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "gradient_shader",
-    "aliases": [],
-    "description": "Returns color value that triggers Wynncraft's gradient text shader",
-    "return": "CustomColor",
-    "args": [
-      {
-        "name": "style",
-        "type": "Integer",
-        "required": false,
-        "default": "1"
-      }
-    ]
-  },
-  {
-    "name": "hue_shift",
-    "aliases": [],
-    "description": "Shifts the hue of provided color",
-    "return": "CustomColor",
-    "args": [
-      {
-        "name": "color",
-        "type": "CustomColor",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "degree",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "rainbow_shader",
-    "aliases": [],
-    "description": "Returns color value that triggers Wynncraft's rainbow text shader",
-    "return": "CustomColor",
-    "args": []
-  },
-  {
-    "name": "saturation_shift",
-    "aliases": [],
-    "description": "Shifts the saturation of provided color",
-    "return": "CustomColor",
-    "args": [
-      {
-        "name": "color",
-        "type": "CustomColor",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "degree",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "shine_shader",
-    "aliases": [],
-    "description": "Returns color value that triggers Wynncraft's shine text shader",
-    "return": "CustomColor",
-    "args": []
-  },
-  {
-    "name": "to_hex_string",
-    "aliases": [],
-    "description": "Returns a hex string representation of provided color",
-    "return": "String",
-    "args": [
-      {
-        "name": "color",
-        "type": "CustomColor",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "if_capped_value",
-    "aliases": [
-      "if_capped,if_cap"
-    ],
-    "description": "If the condition is true, the first value is returned, otherwise the second value is returned",
-    "return": "CappedValue",
-    "args": [
-      {
-        "name": "condition",
-        "type": "Boolean",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "ifTrue",
-        "type": "CappedValue",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "ifFalse",
-        "type": "CappedValue",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "if_custom_color",
-    "aliases": [
-      "if_color,if_customcolor"
-    ],
-    "description": "If the condition is true, the first value is returned, otherwise the second value is returned",
-    "return": "CustomColor",
-    "args": [
-      {
-        "name": "condition",
-        "type": "Boolean",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "ifTrue",
-        "type": "CustomColor",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "ifFalse",
-        "type": "CustomColor",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "if",
-    "aliases": [],
-    "description": "If the condition is true, the first value is returned, otherwise the second value is returned",
-    "return": "Object",
-    "args": [
-      {
-        "name": "condition",
-        "type": "Boolean",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "ifTrue",
-        "type": "Object",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "ifFalse",
-        "type": "Object",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "if_number",
-    "aliases": [
-      "if_num"
-    ],
-    "description": "If the condition is true, the first value is returned, otherwise the second value is returned",
-    "return": "Number",
-    "args": [
-      {
-        "name": "condition",
-        "type": "Boolean",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "ifTrue",
-        "type": "Number",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "ifFalse",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "if_string",
-    "aliases": [
-      "if_str"
-    ],
-    "description": "If the condition is true, the first value is returned, otherwise the second value is returned",
-    "return": "String",
-    "args": [
-      {
-        "name": "condition",
-        "type": "Boolean",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "ifTrue",
-        "type": "String",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "ifFalse",
-        "type": "String",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "distance",
-    "aliases": [],
-    "description": "Distance between two locations (in meters)",
-    "return": "Double",
-    "args": [
-      {
-        "name": "first",
-        "type": "Location",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "second",
-        "type": "Location",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "location",
-    "aliases": [
-      "loc"
-    ],
-    "description": "Creates a location from three coordinates",
-    "return": "Location",
-    "args": [
-      {
-        "name": "x",
-        "type": "Number",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "y",
-        "type": "Number",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "z",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "x",
-    "aliases": [],
-    "description": "Extracts the X coordinate from a location",
-    "return": "Integer",
-    "args": [
-      {
-        "name": "location",
-        "type": "Location",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "y",
-    "aliases": [],
-    "description": "Extracts the Y coordinate from a location",
-    "return": "Integer",
-    "args": [
-      {
-        "name": "location",
-        "type": "Location",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "z",
-    "aliases": [],
-    "description": "Extracts the Z coordinate from a location",
-    "return": "Integer",
-    "args": [
-      {
-        "name": "location",
-        "type": "Location",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "and",
-    "aliases": [],
-    "description": "Checks if all conditions are true",
-    "return": "Boolean",
-    "args": [
-      {
-        "name": "values",
-        "type": "List",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "equals",
-    "aliases": [
-      "eq"
-    ],
-    "description": "Checks if two numbers are equal",
-    "return": "Boolean",
-    "args": [
-      {
-        "name": "first",
-        "type": "Number",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "second",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "greater_than",
-    "aliases": [
-      "mt,more_than,gt"
-    ],
-    "description": "Checks if the first value is greater than the second",
-    "return": "Boolean",
-    "args": [
-      {
-        "name": "first",
-        "type": "Number",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "second",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "greater_than_or_equals",
-    "aliases": [
-      "mte,more_than_equals,greater_than_equals,gte,geq"
-    ],
-    "description": "Checks if the first value is greater than or equal to the second",
-    "return": "Boolean",
-    "args": [
-      {
-        "name": "first",
-        "type": "Number",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "second",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "less_than",
-    "aliases": [
-      "lt"
-    ],
-    "description": "Checks if the first value is less than the second",
-    "return": "Boolean",
-    "args": [
-      {
-        "name": "first",
-        "type": "Number",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "second",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "less_than_or_equals",
-    "aliases": [
-      "lte,less_than_equals,leq"
-    ],
-    "description": "Checks if the first value is less than or equal to the second",
-    "return": "Boolean",
-    "args": [
-      {
-        "name": "first",
-        "type": "Number",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "second",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "not_equals",
-    "aliases": [
-      "neq"
-    ],
-    "description": "Checks if two values are not equal",
-    "return": "Boolean",
-    "args": [
-      {
-        "name": "first",
-        "type": "Number",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "second",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "not",
-    "aliases": [],
-    "description": "Negates a boolean",
-    "return": "Boolean",
-    "args": [
-      {
-        "name": "value",
-        "type": "Boolean",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "or",
-    "aliases": [],
-    "description": "Checks if any condition is true",
-    "return": "Boolean",
-    "args": [
-      {
-        "name": "values",
-        "type": "List",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "add",
-    "aliases": [],
-    "description": "Adds any amount of numbers together",
-    "return": "Double",
-    "args": [
-      {
-        "name": "values",
-        "type": "List",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "divide",
-    "aliases": [
-      "div"
-    ],
-    "description": "Divides two numbers",
-    "return": "Double",
-    "args": [
-      {
-        "name": "dividend",
-        "type": "Number",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "divisor",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "integer",
-    "aliases": [
-      "int"
-    ],
-    "description": "Converts any number type to an integer",
-    "return": "Integer",
-    "args": [
-      {
-        "name": "value",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "long",
-    "aliases": [],
-    "description": "Converts any number type to a long",
-    "return": "Long",
-    "args": [
-      {
-        "name": "value",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "max",
-    "aliases": [],
-    "description": "The largest of all numbers provided",
-    "return": "Double",
-    "args": [
-      {
-        "name": "values",
-        "type": "List",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "min",
-    "aliases": [],
-    "description": "The smallest of all numbers provided",
-    "return": "Double",
-    "args": [
-      {
-        "name": "values",
-        "type": "List",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "modulo",
-    "aliases": [
-      "mod"
-    ],
-    "description": "Returns the modulo (remainder of division) of two numbers",
-    "return": "Double",
-    "args": [
-      {
-        "name": "dividend",
-        "type": "Number",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "divisor",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "multiply",
-    "aliases": [
-      "mul"
-    ],
-    "description": "Multiplies any amount of numbers",
-    "return": "Double",
-    "args": [
-      {
-        "name": "values",
-        "type": "List",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "power",
-    "aliases": [
-      "pow"
-    ],
-    "description": "Returns the first number raised to the power of the second number",
-    "return": "Double",
-    "args": [
-      {
-        "name": "base",
-        "type": "Number",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "exponent",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "random",
-    "aliases": [
-      "rand"
-    ],
-    "description": "Random number between minimum and maximum (excludes max)",
-    "return": "Double",
-    "args": [
-      {
-        "name": "min",
-        "type": "Number",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "max",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "round",
-    "aliases": [],
-    "description": "Rounds a number to the specified number of decimals",
-    "return": "Double",
-    "args": [
-      {
-        "name": "value",
-        "type": "Number",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "decimals",
-        "type": "Integer",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "square_root",
-    "aliases": [
-      "sqrt"
-    ],
-    "description": "Returns the square root of a number",
-    "return": "Double",
-    "args": [
-      {
-        "name": "value",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "subtract",
-    "aliases": [
-      "sub"
-    ],
-    "description": "Subtracts the second number from the first number",
-    "return": "Double",
-    "args": [
-      {
-        "name": "first",
-        "type": "Number",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "second",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "name",
-    "aliases": [],
-    "description": "The name of this named value",
-    "return": "String",
-    "args": [
-      {
-        "name": "named",
-        "type": "NamedValue",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "named_value",
-    "aliases": [
-      "named"
-    ],
-    "description": "A named value from a name and a value",
-    "return": "NamedValue",
-    "args": [
-      {
-        "name": "name",
-        "type": "String",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "value",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "value",
-    "aliases": [
-      "val"
-    ],
-    "description": "The value of this named value",
-    "return": "Double",
-    "args": [
-      {
-        "name": "named",
-        "type": "NamedValue",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "capped_string",
-    "aliases": [
-      "cap_str,str_cap"
-    ],
-    "description": "Returns formatted Capped Value with delimiter in between",
-    "return": "String",
-    "args": [
-      {
-        "name": "value",
-        "type": "CappedValue",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "delimiter",
-        "type": "String",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "concat",
-    "aliases": [],
-    "description": "Concatenates any amount of strings together",
-    "return": "String",
-    "args": [
-      {
-        "name": "values",
-        "type": "List",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "format_capped",
-    "aliases": [],
-    "description": "Formats a capped value to a shorter version.",
-    "return": "String",
-    "args": [
-      {
-        "name": "value",
-        "type": "CappedValue",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "format_date",
-    "aliases": [],
-    "description": "Formats a timestamp to a string version.",
-    "return": "String",
-    "args": [
-      {
-        "name": "timestamp",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "format_duration",
-    "aliases": [],
-    "description": "Formats seconds to a shorter version.",
-    "return": "String",
-    "args": [
-      {
-        "name": "seconds",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "format",
-    "aliases": [],
-    "description": "Formats a number to a shorter version.",
-    "return": "String",
-    "args": [
-      {
-        "name": "value",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "format_ranged",
-    "aliases": [],
-    "description": "Formats a ranged value to a shorter version.",
-    "return": "String",
-    "args": [
-      {
-        "name": "value",
-        "type": "RangedValue",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "leading_zeros",
-    "aliases": [],
-    "description": "Adds leading zeros to a number",
-    "return": "String",
-    "args": [
-      {
-        "name": "value",
-        "type": "Integer",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "length",
-        "type": "Integer",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "parse_double",
-    "aliases": [],
-    "description": "Parses a string to a double",
-    "return": "Double",
-    "args": [
-      {
-        "name": "value",
-        "type": "String",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "parse_integer",
-    "aliases": [
-      "parse_int"
-    ],
-    "description": "Parses a string to an integer",
-    "return": "Integer",
-    "args": [
-      {
-        "name": "value",
-        "type": "String",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "regex_find",
-    "aliases": [],
-    "description": "Checks if the given regex finds the given string",
-    "return": "Boolean",
-    "args": [
-      {
-        "name": "source",
-        "type": "String",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "regex",
-        "type": "String",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "regex_match",
-    "aliases": [],
-    "description": "Checks if the given regex matches the given string",
-    "return": "Boolean",
-    "args": [
-      {
-        "name": "source",
-        "type": "String",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "regex",
-        "type": "String",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "regex_replace",
-    "aliases": [],
-    "description": "Replaces all matches of the given regex with the given replacement",
-    "return": "String",
-    "args": [
-      {
-        "name": "source",
-        "type": "String",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "regex",
-        "type": "String",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "replacement",
-        "type": "String",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "repeat",
-    "aliases": [],
-    "description": "Repeats the given string the specified amount of times",
-    "return": "String",
-    "args": [
-      {
-        "name": "value",
-        "type": "String",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "count",
-        "type": "Integer",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "string_contains",
-    "aliases": [
-      "contains_str"
-    ],
-    "description": "Checks if a string contains another string",
-    "return": "Boolean",
-    "args": [
-      {
-        "name": "source",
-        "type": "String",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "substring",
-        "type": "String",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "string_equals",
-    "aliases": [
-      "eq_str"
-    ],
-    "description": "Checks if two strings are equal",
-    "return": "Boolean",
-    "args": [
-      {
-        "name": "first",
-        "type": "String",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "second",
-        "type": "String",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "string",
-    "aliases": [
-      "str"
-    ],
-    "description": "Convert a number to a string",
-    "return": "String",
-    "args": [
-      {
-        "name": "value",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "to_roman_numerals",
-    "aliases": [],
-    "description": "Converts provided number to the equivalent in roman numerals",
-    "return": "String",
-    "args": [
-      {
-        "name": "number",
-        "type": "Integer",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
     "name": "absolute_time",
     "aliases": [],
     "description": "The time, formatted as an absolute date/time",
@@ -1298,122 +16,14 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
     ]
   },
   {
-    "name": "format_time_advanced",
-    "aliases": [
-      "format_date_advanced"
-    ],
-    "description": "Format time to a string using an DateTimeFormatter pattern",
-    "return": "String",
+    "name": "accessory_durability",
+    "aliases": [],
+    "description": "Durability of the specified accessory",
+    "return": "CappedValue",
     "args": [
       {
-        "name": "time",
-        "type": "Time",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "format",
+        "name": "accessory",
         "type": "String",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "seconds_between",
-    "aliases": [],
-    "description": "The number of seconds between two Times, negative if the first is after the second",
-    "return": "Long",
-    "args": [
-      {
-        "name": "first",
-        "type": "Time",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "second",
-        "type": "Time",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "seconds_since",
-    "aliases": [],
-    "description": "The number of seconds that has passed since a given Time, negative if the time is in the future",
-    "return": "Long",
-    "args": [
-      {
-        "name": "time",
-        "type": "Time",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "time",
-    "aliases": [],
-    "description": "A Time from a timestamp",
-    "return": "Time",
-    "args": [
-      {
-        "name": "timestamp",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "time_offset",
-    "aliases": [
-      "offset"
-    ],
-    "description": "A new Time offset by the specified amount",
-    "return": "Time",
-    "args": [
-      {
-        "name": "time",
-        "type": "Time",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "offset",
-        "type": "Number",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "time_string",
-    "aliases": [
-      "time_str"
-    ],
-    "description": "This Time as a string",
-    "return": "String",
-    "args": [
-      {
-        "name": "time",
-        "type": "Time",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "timestamp",
-    "aliases": [],
-    "description": "The timestamp this Time represents",
-    "return": "Long",
-    "args": [
-      {
-        "name": "time",
-        "type": "Time",
         "required": true,
         "default": null
       }
@@ -1424,6 +34,13 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
     "aliases": [],
     "description": "The CustomColor of the current tracked activity type",
     "return": "CustomColor",
+    "args": []
+  },
+  {
+    "name": "activity_icon",
+    "aliases": [],
+    "description": "Returns the icon of tracked activity",
+    "return": "StyledText",
     "args": []
   },
   {
@@ -1450,15 +67,148 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
   {
     "name": "activity_type",
     "aliases": [],
-    "description": "The type of the current tracked activity",
+    "description": "The type of the current tracked activity. One of Quest, World Event, World Discovery, Cave, Dungeon, Raid, Boss Altar, or Lootrun Camp",
     "return": "String",
     "args": []
   },
   {
-    "name": "is_tracking_activity",
+    "name": "add",
     "aliases": [],
-    "description": "Whether you are currently tracking an activity or not",
+    "description": "Adds any amount of numbers together",
+    "return": "Double",
+    "args": [
+      {
+        "name": "values",
+        "type": "List",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "all_shiny_stats",
+    "aliases": [],
+    "description": "Shows a list of all shiny stats",
+    "return": "String",
+    "args": []
+  },
+  {
+    "name": "and",
+    "aliases": [],
+    "description": "Checks if all conditions are true",
     "return": "Boolean",
+    "args": [
+      {
+        "name": "values",
+        "type": "List",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "annihilation_dry_count",
+    "aliases": [],
+    "description": "Get the number of annihilation world events completed that has not contained a corrupted cache",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "annihilation_sun_progress",
+    "aliases": [],
+    "description": "The progress towards a new sun being created during the Annihilation battle",
+    "return": "CappedValue",
+    "args": []
+  },
+  {
+    "name": "area_damage_average",
+    "aliases": [],
+    "description": "The average damage you dealt in your area in the last specified seconds",
+    "return": "Double",
+    "args": [
+      {
+        "name": "seconds",
+        "type": "Integer",
+        "required": false,
+        "default": "10"
+      }
+    ]
+  },
+  {
+    "name": "area_damage_per_second",
+    "aliases": [],
+    "description": "The damage you dealt in your area in the last second",
+    "return": "Long",
+    "args": []
+  },
+  {
+    "name": "armor_durability",
+    "aliases": [],
+    "description": "Durability of the specified armor",
+    "return": "CappedValue",
+    "args": [
+      {
+        "name": "armor",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "arrow_shield_count",
+    "aliases": [],
+    "description": "The number of arrow shield charges you have",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "aspect_tier",
+    "aliases": [],
+    "description": "Returns the tier of the given aspect",
+    "return": "Integer",
+    "args": [
+      {
+        "name": "aspectName",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "at_cap",
+    "aliases": [],
+    "description": "Is the capped value at maximum?",
+    "return": "Boolean",
+    "args": [
+      {
+        "name": "capped",
+        "type": "CappedValue",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "aura_timer",
+    "aliases": [],
+    "description": "The time left before aura strikes",
+    "return": "Double",
+    "args": []
+  },
+  {
+    "name": "blink_shader",
+    "aliases": [],
+    "description": "Returns color value that triggers Wynncraft's blink text shader",
+    "return": "CustomColor",
+    "args": []
+  },
+  {
+    "name": "blocks_above_ground",
+    "aliases": [],
+    "description": "How many blocks you are above the ground (the number of air blocks below you)",
+    "return": "Double",
     "args": []
   },
   {
@@ -1620,7 +370,7 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
   {
     "name": "bomb_type",
     "aliases": [],
-    "description": "The type of the specified bomb from the list of active bombs",
+    "description": "The type of the specified bomb from the list of active bombs. One of Combat XP, Dungeon, Loot, Profession Speed, Profession XP, or Loot Chest",
     "return": "String",
     "args": [
       {
@@ -1670,20 +420,6 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
     ]
   },
   {
-    "name": "aspect_tier",
-    "aliases": [],
-    "description": "Returns the tier of the given aspect",
-    "return": "Integer",
-    "args": [
-      {
-        "name": "aspectName",
-        "type": "String",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
     "name": "bps",
     "aliases": [],
     "description": "Player speed in blocks per second",
@@ -1696,6 +432,60 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
     "description": "Player speed in blocks per second excluding vertical movement",
     "return": "Double",
     "args": []
+  },
+  {
+    "name": "brightness_shift",
+    "aliases": [],
+    "description": "Shifts the brightness of provided color",
+    "return": "CustomColor",
+    "args": [
+      {
+        "name": "color",
+        "type": "CustomColor",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "degree",
+        "type": "Number",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "cap",
+    "aliases": [],
+    "description": "The maximum value from this capped value",
+    "return": "Integer",
+    "args": [
+      {
+        "name": "capped",
+        "type": "CappedValue",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "capped",
+    "aliases": [],
+    "description": "A capped value from current value and cap",
+    "return": "CappedValue",
+    "args": [
+      {
+        "name": "current",
+        "type": "Number",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "cap",
+        "type": "Number",
+        "required": true,
+        "default": null
+      }
+    ]
   },
   {
     "name": "capped_awakened_progress",
@@ -1726,6 +516,20 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
     "args": []
   },
   {
+    "name": "capped_guild_level_progress",
+    "aliases": [],
+    "description": "The XP progress of your guild",
+    "return": "CappedValue",
+    "args": []
+  },
+  {
+    "name": "capped_guild_objectives_progress",
+    "aliases": [],
+    "description": "Progress towards next objectives completed milestone",
+    "return": "CappedValue",
+    "args": []
+  },
+  {
     "name": "capped_health",
     "aliases": [],
     "description": "Your health",
@@ -1733,18 +537,37 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
     "args": []
   },
   {
+    "name": "capped_held_item_durability",
+    "aliases": [],
+    "description": "Durability of the item held in your main hand",
+    "return": "CappedValue",
+    "args": []
+  },
+  {
     "name": "capped_holy_power",
-    "aliases": [
-      "capped_sacred_surge"
-    ],
+    "aliases": [],
     "description": "Your Holy Power",
     "return": "CappedValue",
     "args": []
   },
   {
-    "name": "capped_mana_bank",
+    "name": "capped_ingredient_pouch_slots",
     "aliases": [],
-    "description": "Your Mana Bank",
+    "description": "Used slots in the ingredient pouch",
+    "return": "CappedValue",
+    "args": []
+  },
+  {
+    "name": "capped_inventory_slots",
+    "aliases": [],
+    "description": "Used slots in your inventory",
+    "return": "CappedValue",
+    "args": []
+  },
+  {
+    "name": "capped_level",
+    "aliases": [],
+    "description": "Your combat level",
     "return": "CappedValue",
     "args": []
   },
@@ -1756,6 +579,34 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
     "args": []
   },
   {
+    "name": "capped_mana_bank",
+    "aliases": [],
+    "description": "Your Mana Bank",
+    "return": "CappedValue",
+    "args": []
+  },
+  {
+    "name": "capped_mem",
+    "aliases": [],
+    "description": "Memory usage of the JVM",
+    "return": "CappedValue",
+    "args": []
+  },
+  {
+    "name": "capped_mount_stat",
+    "aliases": [],
+    "description": "Your selected mount stat as a capped value",
+    "return": "CappedValue",
+    "args": [
+      {
+        "name": "stat",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
     "name": "capped_ophanim",
     "aliases": [],
     "description": "Your Ophanim",
@@ -1763,9 +614,105 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
     "args": []
   },
   {
+    "name": "capped_string",
+    "aliases": [],
+    "description": "Returns formatted Capped Value with delimiter in between",
+    "return": "String",
+    "args": [
+      {
+        "name": "value",
+        "type": "CappedValue",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "delimiter",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "capped_xp",
+    "aliases": [],
+    "description": "Your combat XP",
+    "return": "CappedValue",
+    "args": []
+  },
+  {
+    "name": "chest_opened",
+    "aliases": [],
+    "description": "Get the number of loot chests opened",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "chests_opened_this_session",
+    "aliases": [],
+    "description": "Total number of chests you have opened this session, can be filtered by tier",
+    "return": "Integer",
+    "args": [
+      {
+        "name": "tier",
+        "type": "Integer",
+        "required": false,
+        "default": "1"
+      },
+      {
+        "name": "exact",
+        "type": "Boolean",
+        "required": false,
+        "default": "false"
+      }
+    ]
+  },
+  {
+    "name": "chosen_buff",
+    "aliases": [],
+    "description": "Name of a buff chosen this raid",
+    "return": "String",
+    "args": [
+      {
+        "name": "index",
+        "type": "Integer",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "chosen_buffs",
+    "aliases": [],
+    "description": "Number of buffs chosen this raid",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "chosen_gambit",
+    "aliases": [],
+    "description": "Name of a gambit chosen for this raid",
+    "return": "String",
+    "args": [
+      {
+        "name": "index",
+        "type": "Integer",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "chosen_gambits",
+    "aliases": [],
+    "description": "Number of gambits chosen for this raid",
+    "return": "Integer",
+    "args": []
+  },
+  {
     "name": "class",
     "aliases": [],
-    "description": "Name of your current class",
+    "description": "Name of your current class. One of Mage/Dark Wizard, Archer/Hunter, Warrior/Knight, Assassin/Ninja, or Shaman/Skyseer",
     "return": "String",
     "args": [
       {
@@ -1783,6 +730,20 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
     ]
   },
   {
+    "name": "clock",
+    "aliases": [],
+    "description": "The current time, formatted in the current locale style",
+    "return": "String",
+    "args": []
+  },
+  {
+    "name": "clockm",
+    "aliases": [],
+    "description": "The current time, formatted to 24h format",
+    "return": "String",
+    "args": []
+  },
+  {
     "name": "commander_activated",
     "aliases": [],
     "description": "Whether your commander is active",
@@ -1795,6 +756,408 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
     "description": "Duration of your commander",
     "return": "Integer",
     "args": []
+  },
+  {
+    "name": "concat",
+    "aliases": [],
+    "description": "Concatenates any amount of strings together",
+    "return": "String",
+    "args": [
+      {
+        "name": "values",
+        "type": "List",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "concat_styled_text",
+    "aliases": [],
+    "description": "Concatenates any amount of StyledText values together",
+    "return": "StyledText",
+    "args": [
+      {
+        "name": "values",
+        "type": "List",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "contributed_guild_xp",
+    "aliases": [],
+    "description": "How much XP you have contributed to your guild",
+    "return": "Long",
+    "args": []
+  },
+  {
+    "name": "contribution_rank",
+    "aliases": [],
+    "description": "What position you are in your guilds contribution rankings",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "crow_count",
+    "aliases": [],
+    "description": "Returns the amount of your currently active crows",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "current",
+    "aliases": [],
+    "description": "The current value from this capped value",
+    "return": "Integer",
+    "args": [
+      {
+        "name": "capped",
+        "type": "CappedValue",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "current_distortion",
+    "aliases": [],
+    "description": "Your current distortion amount",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "current_raid",
+    "aliases": [],
+    "description": "The name of the raid you are currently in",
+    "return": "String",
+    "args": []
+  },
+  {
+    "name": "current_raid_boss_count",
+    "aliases": [],
+    "description": "How many bosses does the current raid have",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "current_raid_challenge_count",
+    "aliases": [],
+    "description": "How many challenges does the current raid have",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "current_raid_damage",
+    "aliases": [],
+    "description": "How much damage have you dealt in the current raid",
+    "return": "Long",
+    "args": []
+  },
+  {
+    "name": "current_raid_room_damage",
+    "aliases": [],
+    "description": "How much damage have you dealt in the current raid room",
+    "return": "Long",
+    "args": []
+  },
+  {
+    "name": "current_raid_room_name",
+    "aliases": [],
+    "description": "The name of the challenge raid room you are currently in",
+    "return": "String",
+    "args": []
+  },
+  {
+    "name": "current_raid_room_start",
+    "aliases": [],
+    "description": "The time when the current raid room started",
+    "return": "Time",
+    "args": []
+  },
+  {
+    "name": "current_raid_room_time",
+    "aliases": [],
+    "description": "How long you have been in the current raid room for in milliseconds",
+    "return": "Long",
+    "args": []
+  },
+  {
+    "name": "current_raid_start",
+    "aliases": [],
+    "description": "The time when the current raid started",
+    "return": "Time",
+    "args": []
+  },
+  {
+    "name": "current_raid_time",
+    "aliases": [],
+    "description": "How long you have been in the current raid for in milliseconds",
+    "return": "Long",
+    "args": []
+  },
+  {
+    "name": "current_territory",
+    "aliases": [],
+    "description": "The territory you are currently in",
+    "return": "String",
+    "args": []
+  },
+  {
+    "name": "current_territory_owner",
+    "aliases": [],
+    "description": "The name or prefix of the guild that owns the territory you are currently in",
+    "return": "String",
+    "args": [
+      {
+        "name": "prefixOnly",
+        "type": "Boolean",
+        "required": false,
+        "default": "false"
+      }
+    ]
+  },
+  {
+    "name": "current_tower_attack_speed",
+    "aliases": [],
+    "description": "The attack speed of the current tower you are attacking",
+    "return": "Double",
+    "args": []
+  },
+  {
+    "name": "current_tower_damage",
+    "aliases": [],
+    "description": "The damage of the current tower you are attacking",
+    "return": "RangedValue",
+    "args": []
+  },
+  {
+    "name": "current_tower_defense",
+    "aliases": [],
+    "description": "The defense of the current tower you are attacking",
+    "return": "Double",
+    "args": []
+  },
+  {
+    "name": "current_tower_health",
+    "aliases": [],
+    "description": "The health of the current tower you are attacking",
+    "return": "Long",
+    "args": []
+  },
+  {
+    "name": "current_world",
+    "aliases": [],
+    "description": "Get the name of the current world, such as WC32, may be <unknown> or <not on world>",
+    "return": "String",
+    "args": []
+  },
+  {
+    "name": "current_world_event",
+    "aliases": [],
+    "description": "Get the name of the world event you are currently in",
+    "return": "String",
+    "args": []
+  },
+  {
+    "name": "current_world_event_start_time",
+    "aliases": [],
+    "description": "Get the start time of the current world event",
+    "return": "Time",
+    "args": []
+  },
+  {
+    "name": "debuffs_in_radius_value",
+    "aliases": [],
+    "description": "Returns the total value of the debuff from all mobs in the radius",
+    "return": "Integer",
+    "args": [
+      {
+        "name": "radius",
+        "type": "Double",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "debuffName",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "dir",
+    "aliases": [],
+    "description": "Your current direction (heading)",
+    "return": "Double",
+    "args": []
+  },
+  {
+    "name": "distance",
+    "aliases": [],
+    "description": "Distance between two locations (in meters)",
+    "return": "Double",
+    "args": [
+      {
+        "name": "first",
+        "type": "Location",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "second",
+        "type": "Location",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "divide",
+    "aliases": [],
+    "description": "Divides two numbers",
+    "return": "Double",
+    "args": [
+      {
+        "name": "dividend",
+        "type": "Number",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "divisor",
+        "type": "Number",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "dry_aspects",
+    "aliases": [],
+    "description": "Dry Aspects",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "dry_boxes",
+    "aliases": [],
+    "description": "Get the number of found gear boxes that has not been a mythic",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "dry_pulls",
+    "aliases": [],
+    "description": "Get the number of pulls that has not contained a mythic",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "dry_raid_reward_pulls",
+    "aliases": [],
+    "description": "Dry Raid Reward Pulls",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "dry_raids_aspects",
+    "aliases": [],
+    "description": "Dry Raids Aspects",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "dry_raids_tomes",
+    "aliases": [],
+    "description": "Dry Raids Tomes",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "dry_streak",
+    "aliases": [],
+    "description": "Get the number of loot chests opened that has not contained a mythic",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "emerald_block",
+    "aliases": [],
+    "description": "Get the number of emerald blocks in your inventory",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "emerald_string",
+    "aliases": [],
+    "description": "Get the value of all currency in your inventory, nicely formatted as LE/EB/E",
+    "return": "String",
+    "args": [
+      {
+        "name": "zeros",
+        "type": "Boolean",
+        "required": false,
+        "default": "false"
+      }
+    ]
+  },
+  {
+    "name": "emeralds",
+    "aliases": [],
+    "description": "Amount of money in emeralds in inventory (Besides LE and EB)",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "equals",
+    "aliases": [],
+    "description": "Checks if two numbers are equal",
+    "return": "Boolean",
+    "args": [
+      {
+        "name": "first",
+        "type": "Number",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "second",
+        "type": "Number",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "equipped_accessory_name",
+    "aliases": [],
+    "description": "Returns the name of the specified accessory if equipped. If it was not found the name will be empty",
+    "return": "String",
+    "args": [
+      {
+        "name": "accessory",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "equipped_armor_name",
+    "aliases": [],
+    "description": "Returns the name of the specified armor piece if equipped. If it was not found the name will be empty",
+    "return": "String",
+    "args": [
+      {
+        "name": "armor",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
   },
   {
     "name": "equipped_aspect",
@@ -1811,69 +1174,131 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
     ]
   },
   {
-    "name": "guild_objective_goal",
+    "name": "estimated_time_to_finish_war",
     "aliases": [],
-    "description": "The goal of your guild objective",
-    "return": "String",
+    "description": "The estimated time to finish the war you are currently in",
+    "return": "Long",
     "args": []
   },
   {
-    "name": "guild_objective_score",
+    "name": "estimated_war_end",
     "aliases": [],
-    "description": "The score of your guild objective",
+    "description": "The estimated time to the current war will end",
+    "return": "Time",
+    "args": []
+  },
+  {
+    "name": "fade_shader",
+    "aliases": [],
+    "description": "Returns color value that triggers Wynncraft's fade text shader",
+    "return": "CustomColor",
+    "args": []
+  },
+  {
+    "name": "focused_mob_health",
+    "aliases": [],
+    "description": "The health of the mob you are currently attacking",
+    "return": "Long",
+    "args": []
+  },
+  {
+    "name": "focused_mob_health_percent",
+    "aliases": [],
+    "description": "The remaining health percentage of the mob you are currently attacking",
     "return": "CappedValue",
     "args": []
   },
   {
-    "name": "has_no_gui",
+    "name": "focused_mob_name",
     "aliases": [],
-    "description": "Whether your GUI is hidden or not, usually in a cutscene or menu",
-    "return": "Boolean",
-    "args": []
-  },
-  {
-    "name": "health",
-    "aliases": [],
-    "description": "Your current health",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "health_max",
-    "aliases": [],
-    "description": "Maximum possible health",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "health_pct",
-    "aliases": [],
-    "description": "Your current health as percentage of max",
-    "return": "Double",
-    "args": []
-  },
-  {
-    "name": "hummingbirds_state",
-    "aliases": [],
-    "description": "Whether your hummingbirds are attacking or are with you",
-    "return": "Boolean",
-    "args": []
-  },
-  {
-    "name": "id",
-    "aliases": [],
-    "description": "Your character's ID",
+    "description": "The name of the mob you are currently attacking",
     "return": "String",
     "args": []
   },
   {
-    "name": "is_aspect_equipped",
+    "name": "format",
     "aliases": [],
-    "description": "Returns whether the given aspect is equipped or not",
-    "return": "Boolean",
+    "description": "Formats a number to a shorter version.",
+    "return": "String",
     "args": [
       {
-        "name": "aspectName",
+        "name": "value",
+        "type": "Number",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "format_capped",
+    "aliases": [],
+    "description": "Formats a capped value to a shorter version.",
+    "return": "String",
+    "args": [
+      {
+        "name": "value",
+        "type": "CappedValue",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "format_date",
+    "aliases": [],
+    "description": "Formats a timestamp to a string version.",
+    "return": "String",
+    "args": [
+      {
+        "name": "timestamp",
+        "type": "Number",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "format_duration",
+    "aliases": [],
+    "description": "Formats seconds to a shorter version.",
+    "return": "String",
+    "args": [
+      {
+        "name": "seconds",
+        "type": "Number",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "format_ranged",
+    "aliases": [],
+    "description": "Formats a ranged value to a shorter version.",
+    "return": "String",
+    "args": [
+      {
+        "name": "value",
+        "type": "RangedValue",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "format_time_advanced",
+    "aliases": [],
+    "description": "Format time to a string using an DateTimeFormatter pattern",
+    "return": "String",
+    "args": [
+      {
+        "name": "time",
+        "type": "Time",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "format",
         "type": "String",
         "required": true,
         "default": null
@@ -1881,55 +1306,67 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
     ]
   },
   {
-    "name": "is_riding_horse",
+    "name": "fps",
     "aliases": [],
-    "description": "Whether you are riding a horse or not",
-    "return": "Boolean",
-    "args": []
-  },
-  {
-    "name": "mana",
-    "aliases": [],
-    "description": "Your current mana",
+    "description": "The current FPS (frames per second)",
     "return": "Integer",
     "args": []
   },
   {
-    "name": "mana_max",
+    "name": "friends",
     "aliases": [],
-    "description": "Maximum possible mana",
+    "description": "Number of friends online",
     "return": "Integer",
     "args": []
   },
   {
-    "name": "mana_pct",
+    "name": "from_codepoint",
     "aliases": [],
-    "description": "Your current mana as percentage of max",
-    "return": "Double",
-    "args": []
-  },
-  {
-    "name": "ophanim_active",
-    "aliases": [],
-    "description": "Is the Ophanim skill active?",
-    "return": "Boolean",
-    "args": []
-  },
-  {
-    "name": "ophanim_healing_percent",
-    "aliases": [],
-    "description": "Percentage of max health healed in last 10 seconds with Ophanim",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "ophanim_orb",
-    "aliases": [],
-    "description": "Returns the status of the given Ophanim orb. Returns -1 if the player doesn't have an orb with the given ID, otherwise, returns a number based on the color of the orb, 3 if it's blue, 2 if it's yellow, 1 if it's red and 0 if the orb is dead.",
-    "return": "Integer",
+    "description": "Converts provided codepoint to the equivalent string character",
+    "return": "String",
     "args": [
       {
-        "name": "orbNumber",
+        "name": "codepoint",
+        "type": "Number",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "from_hex",
+    "aliases": [],
+    "description": "Returns a color value based on provided hex argument",
+    "return": "CustomColor",
+    "args": [
+      {
+        "name": "hex",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "from_rgb",
+    "aliases": [],
+    "description": "Returns a color value based on provided RGB arguments",
+    "return": "CustomColor",
+    "args": [
+      {
+        "name": "r",
+        "type": "Integer",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "g",
+        "type": "Integer",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "b",
         "type": "Integer",
         "required": true,
         "default": null
@@ -1937,448 +1374,153 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
     ]
   },
   {
-    "name": "personal_objective_goal",
+    "name": "from_rgb_percent",
     "aliases": [],
-    "description": "The goal of your personal objective",
+    "description": "Returns a color value based on provided RGB arguments",
+    "return": "CustomColor",
+    "args": [
+      {
+        "name": "r",
+        "type": "Number",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "g",
+        "type": "Number",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "b",
+        "type": "Number",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "gathering_totem",
+    "aliases": [],
+    "description": "The location of the gathering totem",
+    "return": "Location",
+    "args": [
+      {
+        "name": "totemNumber",
+        "type": "Integer",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "gathering_totem_count",
+    "aliases": [],
+    "description": "The number of gathering totems around you",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "gathering_totem_distance",
+    "aliases": [],
+    "description": "The distance to the gathering totem",
+    "return": "Double",
+    "args": [
+      {
+        "name": "totemNumber",
+        "type": "Integer",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "gathering_totem_owner",
+    "aliases": [],
+    "description": "The name of the player who placed the gathering totem",
     "return": "String",
     "args": [
       {
-        "name": "index",
+        "name": "totemNumber",
+        "type": "Integer",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "gathering_totem_time_left",
+    "aliases": [],
+    "description": "The time left on the gathering totem",
+    "return": "String",
+    "args": [
+      {
+        "name": "totemNumber",
+        "type": "Integer",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "gradient_shader",
+    "aliases": [],
+    "description": "Returns color value that triggers Wynncraft's gradient text shader",
+    "return": "CustomColor",
+    "args": [
+      {
+        "name": "style",
         "type": "Integer",
         "required": false,
-        "default": "0"
+        "default": "1"
       }
     ]
   },
   {
-    "name": "personal_objective_score",
+    "name": "greater_than",
     "aliases": [],
-    "description": "The score of your personal objective",
-    "return": "CappedValue",
-    "args": [
-      {
-        "name": "index",
-        "type": "Integer",
-        "required": false,
-        "default": "0"
-      }
-    ]
-  },
-  {
-    "name": "sprint",
-    "aliases": [],
-    "description": "Your remaining sprint stamina",
-    "return": "CappedValue",
-    "args": []
-  },
-  {
-    "name": "area_damage_average",
-    "aliases": [
-      "adavg"
-    ],
-    "description": "The average damage you dealt in your area in the last specified seconds",
-    "return": "Double",
-    "args": [
-      {
-        "name": "seconds",
-        "type": "Integer",
-        "required": false,
-        "default": "10"
-      }
-    ]
-  },
-  {
-    "name": "area_damage_per_second",
-    "aliases": [
-      "adps"
-    ],
-    "description": "The damage you dealt in your area in the last second",
-    "return": "Long",
-    "args": []
-  },
-  {
-    "name": "blocks_above_ground",
-    "aliases": [
-      "agl,above_ground_level"
-    ],
-    "description": "How many blocks you are above the ground (the number of air blocks below you)",
-    "return": "Double",
-    "args": []
-  },
-  {
-    "name": "focused_mob_health",
-    "aliases": [
-      "foc_mob_hp"
-    ],
-    "description": "The health of the mob you are currently attacking",
-    "return": "Long",
-    "args": []
-  },
-  {
-    "name": "focused_mob_health_percent",
-    "aliases": [
-      "foc_mob_hp_pct"
-    ],
-    "description": "The remaining health percentage of the mob you are currently attacking",
-    "return": "CappedValue",
-    "args": []
-  },
-  {
-    "name": "focused_mob_name",
-    "aliases": [
-      "foc_mob_name"
-    ],
-    "description": "The name of the mob you are currently attacking",
-    "return": "String",
-    "args": []
-  },
-  {
-    "name": "kills_per_minute",
-    "aliases": [
-      "kpm"
-    ],
-    "description": "How many mobs you have killed in the last 60 seconds",
-    "return": "Integer",
-    "args": [
-      {
-        "name": "includeShared",
-        "type": "Boolean",
-        "required": false,
-        "default": "true"
-      }
-    ]
-  },
-  {
-    "name": "last_damage_dealt",
-    "aliases": [
-      "last_dam"
-    ],
-    "description": "The last time you damaged a mob",
-    "return": "Time",
-    "args": []
-  },
-  {
-    "name": "last_kill",
-    "aliases": [],
-    "description": "The last time you killed a mob",
-    "return": "Time",
-    "args": [
-      {
-        "name": "includeShared",
-        "type": "Boolean",
-        "required": false,
-        "default": "false"
-      }
-    ]
-  },
-  {
-    "name": "last_spell_name",
-    "aliases": [
-      "recast_name"
-    ],
-    "description": "The name of the last spell cast",
-    "return": "String",
-    "args": [
-      {
-        "name": "burst",
-        "type": "Boolean",
-        "required": false,
-        "default": "false"
-      }
-    ]
-  },
-  {
-    "name": "last_spell_repeat_count",
-    "aliases": [
-      "recast_count"
-    ],
-    "description": "The number of times the last spell has been cast in a row in the current burst",
-    "return": "Integer",
-    "args": [
-      {
-        "name": "burst",
-        "type": "Boolean",
-        "required": false,
-        "default": "false"
-      }
-    ]
-  },
-  {
-    "name": "ticks_since_last_spell",
-    "aliases": [
-      "recast_ticks"
-    ],
-    "description": "The number of ticks since the last spell was cast",
-    "return": "Integer",
-    "args": [
-      {
-        "name": "burst",
-        "type": "Boolean",
-        "required": false,
-        "default": "false"
-      }
-    ]
-  },
-  {
-    "name": "time_since_last_damage_dealt",
-    "aliases": [
-      "last_dam_ms"
-    ],
-    "description": "The time, in milliseconds, since you last damaged a mob",
-    "return": "Long",
-    "args": []
-  },
-  {
-    "name": "time_since_last_kill",
-    "aliases": [
-      "last_kill_ms"
-    ],
-    "description": "The time, in milliseconds, since you last killed a mob",
-    "return": "Long",
-    "args": [
-      {
-        "name": "includeShared",
-        "type": "Boolean",
-        "required": false,
-        "default": "false"
-      }
-    ]
-  },
-  {
-    "name": "total_area_damage",
-    "aliases": [
-      "total_dmg,tdmg"
-    ],
-    "description": "The sum of damage you dealt in your area in the last specified seconds",
-    "return": "Double",
-    "args": [
-      {
-        "name": "seconds",
-        "type": "Integer",
-        "required": false,
-        "default": "10"
-      }
-    ]
-  },
-  {
-    "name": "capped_level",
-    "aliases": [],
-    "description": "Your combat level",
-    "return": "CappedValue",
-    "args": []
-  },
-  {
-    "name": "capped_xp",
-    "aliases": [],
-    "description": "Your combat XP",
-    "return": "CappedValue",
-    "args": []
-  },
-  {
-    "name": "level",
-    "aliases": [
-      "lvl"
-    ],
-    "description": "Your current combat level",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "xp",
-    "aliases": [],
-    "description": "Your current XP in this level expressed as points (formatted)",
-    "return": "String",
-    "args": []
-  },
-  {
-    "name": "xp_pct",
-    "aliases": [],
-    "description": "Your current XP in this level expressed percentage of level up requirement",
-    "return": "Double",
-    "args": []
-  },
-  {
-    "name": "xp_per_minute",
-    "aliases": [
-      "xpm"
-    ],
-    "description": "The amount of experience you gain per minute, formatted.",
-    "return": "String",
-    "args": []
-  },
-  {
-    "name": "xp_per_minute_raw",
-    "aliases": [
-      "xpm_raw"
-    ],
-    "description": "The amount of experience you gain per minute, raw amount.",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "xp_percentage_per_minute",
-    "aliases": [
-      "xppm"
-    ],
-    "description": "The amount of experience you gain per minute, percentage.",
-    "return": "Double",
-    "args": []
-  },
-  {
-    "name": "xp_raw",
-    "aliases": [],
-    "description": "Your current XP in this level expressed as points (raw number)",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "xp_req",
-    "aliases": [],
-    "description": "XP points needed to level up (formatted)",
-    "return": "String",
-    "args": []
-  },
-  {
-    "name": "xp_req_raw",
-    "aliases": [],
-    "description": "XP points needed to level up (raw number)",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "capped_mem",
-    "aliases": [
-      "capped_memory"
-    ],
-    "description": "Memory usage of the JVM",
-    "return": "CappedValue",
-    "args": []
-  },
-  {
-    "name": "clock",
-    "aliases": [],
-    "description": "The current time, formatted in the current locale style",
-    "return": "String",
-    "args": []
-  },
-  {
-    "name": "clockm",
-    "aliases": [],
-    "description": "The current time, formatted to 24h format",
-    "return": "String",
-    "args": []
-  },
-  {
-    "name": "mem_max",
-    "aliases": [
-      "memorymax,memmax"
-    ],
-    "description": "Maximum amount of memory available to the JVM",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "mem_pct",
-    "aliases": [
-      "memorypct,mempct"
-    ],
-    "description": "Percentage of available memory that is currently being used",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "mem_used",
-    "aliases": [
-      "memoryused,memused"
-    ],
-    "description": "Current amount of memory used by the JVM",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "minecraft_version",
-    "aliases": [],
-    "description": "Minecraft version you are now playing on",
-    "return": "String",
-    "args": []
-  },
-  {
-    "name": "now",
-    "aliases": [],
-    "description": "The current time as a Time",
-    "return": "Time",
-    "args": []
-  },
-  {
-    "name": "stopwatch_hours",
-    "aliases": [],
-    "description": "The number in the hours position on the stopwatch",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "stopwatch_milliseconds",
-    "aliases": [],
-    "description": "The number in the milliseconds position on the stopwatch",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "stopwatch_minutes",
-    "aliases": [],
-    "description": "The number in the minutes position on the stopwatch",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "stopwatch_running",
-    "aliases": [],
-    "description": "Checks if the stopwatch is currently running",
+    "description": "Checks if the first value is greater than the second",
     "return": "Boolean",
-    "args": []
+    "args": [
+      {
+        "name": "first",
+        "type": "Number",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "second",
+        "type": "Number",
+        "required": true,
+        "default": null
+      }
+    ]
   },
   {
-    "name": "stopwatch_seconds",
+    "name": "greater_than_or_equals",
     "aliases": [],
-    "description": "The number in the seconds position on the stopwatch",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "stopwatch_zero",
-    "aliases": [
-      "stopwatch_is_zero"
-    ],
-    "description": "Checks if the stopwatch is currently at zero",
+    "description": "Checks if the first value is greater than or equal to the second",
     "return": "Boolean",
-    "args": []
+    "args": [
+      {
+        "name": "first",
+        "type": "Number",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "second",
+        "type": "Number",
+        "required": true,
+        "default": null
+      }
+    ]
   },
   {
-    "name": "wynncraft_version",
+    "name": "guardian_angels_count",
     "aliases": [],
-    "description": "Wynncraft version of the world you are playing on",
-    "return": "String",
-    "args": []
-  },
-  {
-    "name": "wynntils_version",
-    "aliases": [],
-    "description": "Wynntils version you are now playing on",
-    "return": "String",
-    "args": []
-  },
-  {
-    "name": "capped_guild_level_progress",
-    "aliases": [],
-    "description": "The XP progress of your guild",
-    "return": "CappedValue",
-    "args": []
-  },
-  {
-    "name": "capped_guild_objectives_progress",
-    "aliases": [],
-    "description": "Progress towards next objectives completed milestone",
-    "return": "CappedValue",
+    "description": "The number of guardian angel charges you have",
+    "return": "Integer",
     "args": []
   },
   {
@@ -2396,47 +1538,31 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
     "args": []
   },
   {
-    "name": "guild_rank",
+    "name": "guild_objective_event_bonus",
     "aliases": [],
-    "description": "Your Rank in the Guild you are currently in",
+    "description": "Whether your guild objective has an event bonus or not",
+    "return": "Boolean",
+    "args": []
+  },
+  {
+    "name": "guild_objective_goal",
+    "aliases": [],
+    "description": "The goal of your guild objective",
     "return": "String",
     "args": []
   },
   {
-    "name": "is_allied_guild",
-    "aliases": [
-      "is_allied,is_ally"
-    ],
-    "description": "Whether or not the provided guild is an ally of your guild",
-    "return": "Boolean",
-    "args": [
-      {
-        "name": "guild",
-        "type": "String",
-        "required": true,
-        "default": null
-      }
-    ]
+    "name": "guild_objective_score",
+    "aliases": [],
+    "description": "The score of your guild objective",
+    "return": "CappedValue",
+    "args": []
   },
   {
-    "name": "is_guild_member",
+    "name": "guild_rank",
     "aliases": [],
-    "description": "Whether provided player is in your guild or not",
-    "return": "Boolean",
-    "args": [
-      {
-        "name": "member",
-        "type": "String",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "objective_streak",
-    "aliases": [],
-    "description": "How much consecutive guild objectives you have completed",
-    "return": "Integer",
+    "description": "Your Rank in the Guild you are currently in",
+    "return": "String",
     "args": []
   },
   {
@@ -2496,204 +1622,71 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
     ]
   },
   {
-    "name": "capped_horse_level",
+    "name": "hades_party_member_uuid",
     "aliases": [],
-    "description": "Your horse's level",
-    "return": "CappedValue",
-    "args": []
-  },
-  {
-    "name": "capped_horse_total_level_time",
-    "aliases": [
-      "h_tot_lvl_time"
-    ],
-    "description": "Your horse's time until max level in seconds",
-    "return": "CappedValue",
-    "args": []
-  },
-  {
-    "name": "capped_horse_xp",
-    "aliases": [],
-    "description": "Your horse's XP",
-    "return": "CappedValue",
-    "args": []
-  },
-  {
-    "name": "horse_level",
-    "aliases": [
-      "h_lvl"
-    ],
-    "description": "Your horse's current level",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "horse_level_max",
-    "aliases": [
-      "h_mlvl"
-    ],
-    "description": "Your horse's maximum level",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "horse_level_time",
-    "aliases": [
-      "h_lvl_time"
-    ],
-    "description": "Your horse's time until level up in seconds",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "horse_name",
-    "aliases": [
-      "h_name"
-    ],
-    "description": "Your horse's name",
+    "description": "The UUID of given party member using Hades",
     "return": "String",
-    "args": []
-  },
-  {
-    "name": "horse_tier",
-    "aliases": [
-      "h_tier"
-    ],
-    "description": "Your horse's tier",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "horse_xp",
-    "aliases": [
-      "h_xp"
-    ],
-    "description": "Your horse's current XP",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "accessory_durability",
-    "aliases": [],
-    "description": "Durability of the specified accessory",
-    "return": "CappedValue",
     "args": [
       {
-        "name": "accessory",
-        "type": "String",
+        "name": "index",
+        "type": "Integer",
         "required": true,
         "default": null
       }
     ]
   },
   {
-    "name": "all_shiny_stats",
+    "name": "has_no_gui",
     "aliases": [],
-    "description": "Shows a list of all shiny stats",
-    "return": "String",
+    "description": "Whether your GUI is hidden or not, usually in a cutscene or menu",
+    "return": "Boolean",
     "args": []
   },
   {
-    "name": "armor_durability",
+    "name": "health",
     "aliases": [],
-    "description": "Durability of the specified armor",
-    "return": "CappedValue",
-    "args": [
-      {
-        "name": "armor",
-        "type": "String",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "capped_held_item_durability",
-    "aliases": [],
-    "description": "Durability of the item held in your main hand",
-    "return": "CappedValue",
-    "args": []
-  },
-  {
-    "name": "capped_ingredient_pouch_slots",
-    "aliases": [],
-    "description": "Used slots in the ingredient pouch",
-    "return": "CappedValue",
-    "args": []
-  },
-  {
-    "name": "capped_inventory_slots",
-    "aliases": [],
-    "description": "Used slots in your inventory",
-    "return": "CappedValue",
-    "args": []
-  },
-  {
-    "name": "emerald_block",
-    "aliases": [
-      "eb"
-    ],
-    "description": "Get the number of emerald blocks in your inventory",
+    "description": "Your current health",
     "return": "Integer",
     "args": []
   },
   {
-    "name": "emerald_string",
-    "aliases": [
-      "estr"
-    ],
-    "description": "Get the value of all currency in your inventory, nicely formatted as LE/EB/E",
-    "return": "String",
-    "args": [
-      {
-        "name": "zeros",
-        "type": "Boolean",
-        "required": false,
-        "default": "false"
-      }
-    ]
+    "name": "health_max",
+    "aliases": [],
+    "description": "Maximum possible health",
+    "return": "Integer",
+    "args": []
   },
   {
-    "name": "emeralds",
-    "aliases": [
-      "em"
-    ],
-    "description": "Amount of money in emeralds in inventory (Besides LE and EB)",
-    "return": "Integer",
+    "name": "health_pct",
+    "aliases": [],
+    "description": "Your current health as percentage of max",
+    "return": "Double",
     "args": []
   },
   {
     "name": "held_item_cooldown",
-    "aliases": [
-      "held_cooldown,held_cd"
-    ],
+    "aliases": [],
     "description": "Remaining cooldown ticks for the item in your hand",
     "return": "CappedValue",
     "args": []
   },
   {
     "name": "held_item_current_durability",
-    "aliases": [
-      "current_held_durability"
-    ],
+    "aliases": [],
     "description": "Current durability of the item in your hand",
     "return": "Integer",
     "args": []
   },
   {
     "name": "held_item_max_durability",
-    "aliases": [
-      "max_held_durability"
-    ],
+    "aliases": [],
     "description": "Max durability of the item in your hand",
     "return": "Integer",
     "args": []
   },
   {
     "name": "held_item_name",
-    "aliases": [
-      "held_item,held_name"
-    ],
+    "aliases": [],
     "description": "Name of the item in your hand",
     "return": "String",
     "args": [
@@ -2714,11 +1707,220 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
   },
   {
     "name": "held_item_type",
-    "aliases": [
-      "held_type"
-    ],
+    "aliases": [],
     "description": "Type of the item in your hand",
     "return": "String",
+    "args": []
+  },
+  {
+    "name": "highest_dry_streak",
+    "aliases": [],
+    "description": "The highest dry streak that you had.",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "hounds_time_left",
+    "aliases": [],
+    "description": "The time left on your hound(s)",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "hue_shift",
+    "aliases": [],
+    "description": "Shifts the hue of provided color",
+    "return": "CustomColor",
+    "args": [
+      {
+        "name": "color",
+        "type": "CustomColor",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "degree",
+        "type": "Number",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "hummingbirds_state",
+    "aliases": [],
+    "description": "Whether your hummingbirds are attacking or are with you",
+    "return": "Boolean",
+    "args": []
+  },
+  {
+    "name": "id",
+    "aliases": [],
+    "description": "Your character's ID",
+    "return": "String",
+    "args": []
+  },
+  {
+    "name": "if",
+    "aliases": [],
+    "description": "If the condition is true, the first value is returned, otherwise the second value is returned",
+    "return": "Object",
+    "args": [
+      {
+        "name": "condition",
+        "type": "Boolean",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "ifTrue",
+        "type": "Object",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "ifFalse",
+        "type": "Object",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "if_capped_value",
+    "aliases": [],
+    "description": "If the condition is true, the first value is returned, otherwise the second value is returned",
+    "return": "CappedValue",
+    "args": [
+      {
+        "name": "condition",
+        "type": "Boolean",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "ifTrue",
+        "type": "CappedValue",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "ifFalse",
+        "type": "CappedValue",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "if_custom_color",
+    "aliases": [],
+    "description": "If the condition is true, the first value is returned, otherwise the second value is returned",
+    "return": "CustomColor",
+    "args": [
+      {
+        "name": "condition",
+        "type": "Boolean",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "ifTrue",
+        "type": "CustomColor",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "ifFalse",
+        "type": "CustomColor",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "if_number",
+    "aliases": [],
+    "description": "If the condition is true, the first value is returned, otherwise the second value is returned",
+    "return": "Number",
+    "args": [
+      {
+        "name": "condition",
+        "type": "Boolean",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "ifTrue",
+        "type": "Number",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "ifFalse",
+        "type": "Number",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "if_string",
+    "aliases": [],
+    "description": "If the condition is true, the first value is returned, otherwise the second value is returned",
+    "return": "String",
+    "args": [
+      {
+        "name": "condition",
+        "type": "Boolean",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "ifTrue",
+        "type": "String",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "ifFalse",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "in_mapped_area",
+    "aliases": [],
+    "description": "Are you currently inside a mapped area?",
+    "return": "Boolean",
+    "args": [
+      {
+        "name": "width",
+        "type": "Number",
+        "required": false,
+        "default": "130"
+      },
+      {
+        "name": "height",
+        "type": "Number",
+        "required": false,
+        "default": "130"
+      },
+      {
+        "name": "scale",
+        "type": "Number",
+        "required": false,
+        "default": "1"
+      }
+    ]
+  },
+  {
+    "name": "in_stream",
+    "aliases": [],
+    "description": "Are you currently in streamer mode?",
+    "return": "Boolean",
     "args": []
   },
   {
@@ -2737,27 +1939,63 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
   },
   {
     "name": "ingredient_pouch_open_slots",
-    "aliases": [
-      "pouch_open,pouch_free"
-    ],
+    "aliases": [],
     "description": "How many slots are currently open in your ingredient pouch.",
     "return": "Integer",
     "args": []
   },
   {
     "name": "ingredient_pouch_used_slots",
-    "aliases": [
-      "pouch_used"
-    ],
+    "aliases": [],
     "description": "How many slots are currently used in your ingredient pouch.",
     "return": "Integer",
     "args": []
   },
   {
+    "name": "initial_tower_attack_speed",
+    "aliases": [],
+    "description": "The attack speed of the initial tower you are attacking",
+    "return": "Double",
+    "args": []
+  },
+  {
+    "name": "initial_tower_damage",
+    "aliases": [],
+    "description": "The damage of the initial tower you are attacking",
+    "return": "RangedValue",
+    "args": []
+  },
+  {
+    "name": "initial_tower_defense",
+    "aliases": [],
+    "description": "The defense of the initial tower you are attacking",
+    "return": "Double",
+    "args": []
+  },
+  {
+    "name": "initial_tower_health",
+    "aliases": [],
+    "description": "The health of the initial tower you are attacking",
+    "return": "Long",
+    "args": []
+  },
+  {
+    "name": "integer",
+    "aliases": [],
+    "description": "Converts any number type to an integer",
+    "return": "Integer",
+    "args": [
+      {
+        "name": "value",
+        "type": "Number",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
     "name": "inventory_free",
-    "aliases": [
-      "inv_free"
-    ],
+    "aliases": [],
     "description": "Number of free slots in inventory",
     "return": "Integer",
     "args": []
@@ -2778,18 +2016,112 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
   },
   {
     "name": "inventory_used",
-    "aliases": [
-      "inv_used"
-    ],
+    "aliases": [],
     "description": "Number of used slots in inventory",
     "return": "Integer",
     "args": []
   },
   {
+    "name": "is_allied_guild",
+    "aliases": [],
+    "description": "Whether or not the provided guild is an ally of your guild",
+    "return": "Boolean",
+    "args": [
+      {
+        "name": "guild",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "is_aspect_equipped",
+    "aliases": [],
+    "description": "Returns whether the given aspect is equipped or not",
+    "return": "Boolean",
+    "args": [
+      {
+        "name": "aspectName",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "is_friend",
+    "aliases": [],
+    "description": "Whether specified player is your friend or not",
+    "return": "Boolean",
+    "args": [
+      {
+        "name": "player",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "is_guild_member",
+    "aliases": [],
+    "description": "Whether provided player is in your guild or not",
+    "return": "Boolean",
+    "args": [
+      {
+        "name": "member",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "is_party_member",
+    "aliases": [],
+    "description": "Whether specified player is in your party",
+    "return": "Boolean",
+    "args": [
+      {
+        "name": "player",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "is_riding_horse",
+    "aliases": [],
+    "description": "Whether you are riding a horse or not",
+    "return": "Boolean",
+    "args": []
+  },
+  {
+    "name": "is_territory_queued",
+    "aliases": [],
+    "description": "Is the specified territory queued for an attack?",
+    "return": "Boolean",
+    "args": [
+      {
+        "name": "territoryName",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "is_tracking_activity",
+    "aliases": [],
+    "description": "Whether you are currently tracking an activity or not",
+    "return": "Boolean",
+    "args": []
+  },
+  {
     "name": "item_count",
-    "aliases": [
-      "item_amount"
-    ],
+    "aliases": [],
     "description": "Returns the total number of all items in inventory",
     "return": "Integer",
     "args": [
@@ -2797,115 +2129,43 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
         "name": "name",
         "type": "String",
         "required": false,
-        "default": ""
+        "default": null
       }
     ]
   },
   {
-    "name": "liquid_emerald",
-    "aliases": [
-      "le"
-    ],
-    "description": "Amount of money liquid emeralds in inventory",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "material_count",
+    "name": "key_pressed",
     "aliases": [],
-    "description": "Count of materials in your inventory based on the given criteria",
-    "return": "Integer",
+    "description": "Returns true if the specified key is currently pressed, false otherwise",
+    "return": "Boolean",
     "args": [
       {
-        "name": "name",
-        "type": "String",
-        "required": true,
-        "default": null
-      },
-      {
-        "name": "tier",
+        "name": "keyCode",
         "type": "Integer",
         "required": true,
         "default": null
-      },
-      {
-        "name": "exact",
-        "type": "Boolean",
-        "required": true,
-        "default": null
       }
     ]
   },
   {
-    "name": "money",
+    "name": "kills_per_minute",
     "aliases": [],
-    "description": "Total amount of money in inventory",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "chest_opened",
-    "aliases": [
-      "chest_count"
-    ],
-    "description": "Get the number of loot chests opened",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "chests_opened_this_session",
-    "aliases": [
-      "session_chests"
-    ],
-    "description": "Total number of chests you have opened this session, can be filtered by tier",
+    "description": "How many mobs you have killed in the last 60 seconds",
     "return": "Integer",
     "args": [
       {
-        "name": "tier",
-        "type": "Integer",
-        "required": false,
-        "default": "1"
-      },
-      {
-        "name": "exact",
+        "name": "includeShared",
         "type": "Boolean",
         "required": false,
-        "default": "false"
+        "default": "true"
       }
     ]
   },
   {
-    "name": "dry_boxes",
-    "aliases": [
-      "dry_b,dry_boxes_count"
-    ],
-    "description": "Get the number of found gear boxes that has not been a mythic",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "dry_pulls",
-    "aliases": [
-      "dry_p,dry_pulls_count"
-    ],
-    "description": "Get the number of pulls that has not contained a mythic",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "dry_streak",
-    "aliases": [
-      "dry_s"
-    ],
-    "description": "Get the number of loot chests opened that has not contained a mythic",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "highest_dry_streak",
+    "name": "last_damage_dealt",
     "aliases": [],
-    "description": "The highest dry streak that you had.",
-    "return": "Integer",
+    "description": "The last time you damaged a mob",
+    "return": "Time",
     "args": []
   },
   {
@@ -2916,11 +2176,230 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
     "args": []
   },
   {
+    "name": "last_harvest_material_level",
+    "aliases": [],
+    "description": "The level of the material you last harvested",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "last_harvest_material_name",
+    "aliases": [],
+    "description": "The name of the material you last harvested",
+    "return": "String",
+    "args": []
+  },
+  {
+    "name": "last_harvest_material_tier",
+    "aliases": [],
+    "description": "The tier of the material you last harvested",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "last_harvest_material_type",
+    "aliases": [],
+    "description": "The type of material you last harvested",
+    "return": "String",
+    "args": []
+  },
+  {
+    "name": "last_harvest_resource_type",
+    "aliases": [],
+    "description": "The type of resource you last harvested",
+    "return": "String",
+    "args": []
+  },
+  {
+    "name": "last_harvest_xp_gain",
+    "aliases": [],
+    "description": "The amount of gathering XP you gained from your last harvest",
+    "return": "Float",
+    "args": []
+  },
+  {
+    "name": "last_kill",
+    "aliases": [],
+    "description": "The last time you killed a mob",
+    "return": "Time",
+    "args": [
+      {
+        "name": "includeShared",
+        "type": "Boolean",
+        "required": false,
+        "default": "false"
+      }
+    ]
+  },
+  {
     "name": "last_mythic",
     "aliases": [],
     "description": "The last mythic that you found in a loot chest.",
     "return": "String",
     "args": []
+  },
+  {
+    "name": "last_profession_xp_gain",
+    "aliases": [],
+    "description": "The latest profession that you gained xp for. One of Woodcutting, Mining, Fishing, Farming, Alchemism, Armouring, Cooking, Jeweling, Scribing, Tailoring, Weaponsmithing, or Woodworking",
+    "return": "String",
+    "args": []
+  },
+  {
+    "name": "last_spell_name",
+    "aliases": [],
+    "description": "The name of the last spell cast",
+    "return": "String",
+    "args": [
+      {
+        "name": "burst",
+        "type": "Boolean",
+        "required": false,
+        "default": "false"
+      }
+    ]
+  },
+  {
+    "name": "last_spell_repeat_count",
+    "aliases": [],
+    "description": "The number of times the last spell has been cast in a row in the current burst",
+    "return": "Integer",
+    "args": [
+      {
+        "name": "burst",
+        "type": "Boolean",
+        "required": false,
+        "default": "false"
+      }
+    ]
+  },
+  {
+    "name": "leaderboard_position",
+    "aliases": [],
+    "description": "What position you are in on the specified leaderboard",
+    "return": "Integer",
+    "args": [
+      {
+        "name": "leaderboardKey",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "leading_zeros",
+    "aliases": [],
+    "description": "Adds leading zeros to a number",
+    "return": "String",
+    "args": [
+      {
+        "name": "value",
+        "type": "Integer",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "length",
+        "type": "Integer",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "less_than",
+    "aliases": [],
+    "description": "Checks if the first value is less than the second",
+    "return": "Boolean",
+    "args": [
+      {
+        "name": "first",
+        "type": "Number",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "second",
+        "type": "Number",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "less_than_or_equals",
+    "aliases": [],
+    "description": "Checks if the first value is less than or equal to the second",
+    "return": "Boolean",
+    "args": [
+      {
+        "name": "first",
+        "type": "Number",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "second",
+        "type": "Number",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "level",
+    "aliases": [],
+    "description": "Your current combat level",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "liquid_emerald",
+    "aliases": [],
+    "description": "Amount of money liquid emeralds in inventory",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "location",
+    "aliases": [],
+    "description": "Creates a location from three coordinates",
+    "return": "Location",
+    "args": [
+      {
+        "name": "x",
+        "type": "Number",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "y",
+        "type": "Number",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "z",
+        "type": "Number",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "long",
+    "aliases": [],
+    "description": "Converts any number type to a long",
+    "return": "Long",
+    "args": [
+      {
+        "name": "value",
+        "type": "Number",
+        "required": true,
+        "default": null
+      }
+    ]
   },
   {
     "name": "lootrun_beacon_count",
@@ -2960,7 +2439,7 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
   {
     "name": "lootrun_last_selected_beacon_color",
     "aliases": [],
-    "description": "The color of the beacon you have last selected in your lootrun",
+    "description": "The color of the beacon you have last selected in your lootrun. One of Green, Yellow, Blue, Purple, Gray, Orange, Red, Dark Gray, White, Aqua, Pink, Crimson, or Rainbow",
     "return": "String",
     "args": []
   },
@@ -3104,28 +2583,110 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
     ]
   },
   {
-    "name": "dir",
+    "name": "mana",
     "aliases": [],
-    "description": "Your current direction (heading)",
-    "return": "Double",
-    "args": []
-  },
-  {
-    "name": "fps",
-    "aliases": [],
-    "description": "The current FPS (frames per second)",
+    "description": "Your current mana",
     "return": "Integer",
     "args": []
   },
   {
-    "name": "key_pressed",
+    "name": "mana_max",
     "aliases": [],
-    "description": "Returns true if the specified key is currently pressed, false otherwise",
-    "return": "Boolean",
+    "description": "Maximum possible mana",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "mana_pct",
+    "aliases": [],
+    "description": "Your current mana as percentage of max",
+    "return": "Double",
+    "args": []
+  },
+  {
+    "name": "mantle_shield_count",
+    "aliases": [],
+    "description": "The number of mantle shield charges you have",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "material_count",
+    "aliases": [],
+    "description": "Count of materials in your inventory based on the given criteria",
+    "return": "Integer",
     "args": [
       {
-        "name": "keyCode",
+        "name": "name",
+        "type": "String",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "tier",
         "type": "Integer",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "exact",
+        "type": "Boolean",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "material_dry_streak",
+    "aliases": [],
+    "description": "Returns the number of times a material was not a T3 in a row.",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "max",
+    "aliases": [],
+    "description": "The largest of all numbers provided",
+    "return": "Double",
+    "args": [
+      {
+        "name": "values",
+        "type": "List",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "mem_max",
+    "aliases": [],
+    "description": "Maximum amount of memory available to the JVM",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "mem_pct",
+    "aliases": [],
+    "description": "Percentage of available memory that is currently being used",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "mem_used",
+    "aliases": [],
+    "description": "Current amount of memory used by the JVM",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "min",
+    "aliases": [],
+    "description": "The smallest of all numbers provided",
+    "return": "Double",
+    "args": [
+      {
+        "name": "values",
+        "type": "List",
         "required": true,
         "default": null
       }
@@ -3146,84 +2707,480 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
     ]
   },
   {
+    "name": "minecraft_version",
+    "aliases": [],
+    "description": "Minecraft version you are now playing on",
+    "return": "String",
+    "args": []
+  },
+  {
+    "name": "mirror_image_clone",
+    "aliases": [],
+    "description": "Return the state of the given Mirror Image clone. Returns -1 if the player doesn't have a clone with the given ID, otherwise, returns a number based on the clone color, 1 if green, 0 if the clone is dead.",
+    "return": "Integer",
+    "args": [
+      {
+        "name": "cloneNumber",
+        "type": "Integer",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "mirror_image_duration",
+    "aliases": [],
+    "description": "Return the remaining mirror image duration",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "mob_totem",
+    "aliases": [],
+    "description": "The location of the mob totem",
+    "return": "Location",
+    "args": [
+      {
+        "name": "totemNumber",
+        "type": "Integer",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "mob_totem_count",
+    "aliases": [],
+    "description": "The number of mob totems around you",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "mob_totem_distance",
+    "aliases": [],
+    "description": "The distance to the mob totem",
+    "return": "Double",
+    "args": [
+      {
+        "name": "totemNumber",
+        "type": "Integer",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "mob_totem_owner",
+    "aliases": [],
+    "description": "The name of the player who placed the mob totem",
+    "return": "String",
+    "args": [
+      {
+        "name": "totemNumber",
+        "type": "Integer",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "mob_totem_time_left",
+    "aliases": [],
+    "description": "The time left on the mob totem",
+    "return": "String",
+    "args": [
+      {
+        "name": "totemNumber",
+        "type": "Integer",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "modulo",
+    "aliases": [],
+    "description": "Returns the modulo (remainder of division) of two numbers",
+    "return": "Double",
+    "args": [
+      {
+        "name": "dividend",
+        "type": "Number",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "divisor",
+        "type": "Number",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "momentum",
+    "aliases": [],
+    "description": "The current momentum count",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "momentum_percent",
+    "aliases": [],
+    "description": "The progress towards the next momentum charge as a percentage",
+    "return": "CappedValue",
+    "args": []
+  },
+  {
+    "name": "money",
+    "aliases": [],
+    "description": "Total amount of money in inventory",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "mount_name",
+    "aliases": [],
+    "description": "Your mount's name",
+    "return": "String",
+    "args": []
+  },
+  {
+    "name": "mount_stat",
+    "aliases": [],
+    "description": "Current value of the selected mount stat",
+    "return": "Integer",
+    "args": [
+      {
+        "name": "stat",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "mount_stat_max",
+    "aliases": [],
+    "description": "Maximum value of the selected mount stat",
+    "return": "Integer",
+    "args": [
+      {
+        "name": "stat",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "multiply",
+    "aliases": [],
+    "description": "Multiplies any amount of numbers",
+    "return": "Double",
+    "args": [
+      {
+        "name": "values",
+        "type": "List",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
     "name": "my_location",
-    "aliases": [
-      "my_loc"
-    ],
+    "aliases": [],
     "description": "Your current location",
     "return": "Location",
     "args": []
   },
   {
-    "name": "ticks",
+    "name": "name",
     "aliases": [],
-    "description": "The number of ticks since world start",
-    "return": "Long",
+    "description": "The name of this named value",
+    "return": "String",
+    "args": [
+      {
+        "name": "named",
+        "type": "NamedValue",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "named_value",
+    "aliases": [],
+    "description": "A named value from a name and a value",
+    "return": "NamedValue",
+    "args": [
+      {
+        "name": "name",
+        "type": "String",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "value",
+        "type": "Number",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "newest_world",
+    "aliases": [],
+    "description": "The newest world there is on Wynncraft",
+    "return": "String",
     "args": []
   },
   {
-    "name": "last_harvest_material_level",
+    "name": "not",
     "aliases": [],
-    "description": "The level of the material you last harvested",
+    "description": "Negates a boolean",
+    "return": "Boolean",
+    "args": [
+      {
+        "name": "value",
+        "type": "Boolean",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "not_equals",
+    "aliases": [],
+    "description": "Checks if two values are not equal",
+    "return": "Boolean",
+    "args": [
+      {
+        "name": "first",
+        "type": "Number",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "second",
+        "type": "Number",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "now",
+    "aliases": [],
+    "description": "The current time as a Time",
+    "return": "Time",
+    "args": []
+  },
+  {
+    "name": "objective_streak",
+    "aliases": [],
+    "description": "How much consecutive guild objectives you have completed",
     "return": "Integer",
     "args": []
   },
   {
-    "name": "last_harvest_material_name",
+    "name": "ophanim_active",
     "aliases": [],
-    "description": "The name of the material you last harvested",
-    "return": "String",
+    "description": "Is the Ophanim skill active?",
+    "return": "Boolean",
     "args": []
   },
   {
-    "name": "last_harvest_material_tier",
+    "name": "ophanim_healing_percent",
     "aliases": [],
-    "description": "The tier of the material you last harvested",
+    "description": "Percentage of max health healed in last 10 seconds with Ophanim",
     "return": "Integer",
     "args": []
   },
   {
-    "name": "last_harvest_material_type",
+    "name": "ophanim_orb",
     "aliases": [],
-    "description": "The type of material you last harvested",
+    "description": "Returns the status of the given Ophanim orb. Returns -1 if the player doesn't have an orb with the given ID, otherwise, returns a number based on the color of the orb, 3 if it's blue, 2 if it's yellow, 1 if it's red and 0 if the orb is dead.",
+    "return": "Integer",
+    "args": [
+      {
+        "name": "orbNumber",
+        "type": "Integer",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "or",
+    "aliases": [],
+    "description": "Checks if any condition is true",
+    "return": "Boolean",
+    "args": [
+      {
+        "name": "values",
+        "type": "List",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "parse_double",
+    "aliases": [],
+    "description": "Parses a string to a double",
+    "return": "Double",
+    "args": [
+      {
+        "name": "value",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "parse_integer",
+    "aliases": [],
+    "description": "Parses a string to an integer",
+    "return": "Integer",
+    "args": [
+      {
+        "name": "value",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "party_leader",
+    "aliases": [],
+    "description": "The name of the party leader",
     "return": "String",
     "args": []
   },
   {
-    "name": "last_harvest_resource_type",
+    "name": "party_members",
     "aliases": [],
-    "description": "The type of resource you last harvested",
+    "description": "Number of party members",
+    "return": "Integer",
+    "args": [
+      {
+        "name": "includeOffline",
+        "type": "Boolean",
+        "required": false,
+        "default": "true"
+      }
+    ]
+  },
+  {
+    "name": "percentage",
+    "aliases": [],
+    "description": "The percentage (0-100) of this capped value",
+    "return": "Double",
+    "args": [
+      {
+        "name": "capped",
+        "type": "CappedValue",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "personal_objective_event_bonus",
+    "aliases": [],
+    "description": "Whether your personal objective has an event bonus or not",
+    "return": "Boolean",
+    "args": [
+      {
+        "name": "index",
+        "type": "Integer",
+        "required": false,
+        "default": "0"
+      }
+    ]
+  },
+  {
+    "name": "personal_objective_goal",
+    "aliases": [],
+    "description": "The goal of your personal objective",
     "return": "String",
-    "args": []
+    "args": [
+      {
+        "name": "index",
+        "type": "Integer",
+        "required": false,
+        "default": "0"
+      }
+    ]
   },
   {
-    "name": "last_harvest_xp_gain",
+    "name": "personal_objective_score",
     "aliases": [],
-    "description": "The amount of gathering XP you gained from your last harvest",
-    "return": "Float",
-    "args": []
+    "description": "The score of your personal objective",
+    "return": "CappedValue",
+    "args": [
+      {
+        "name": "index",
+        "type": "Integer",
+        "required": false,
+        "default": "0"
+      }
+    ]
   },
   {
-    "name": "last_profession_xp_gain",
+    "name": "ping",
     "aliases": [],
-    "description": "The latest profession that you gained xp for",
-    "return": "String",
-    "args": []
-  },
-  {
-    "name": "material_dry_streak",
-    "aliases": [
-      "mat_dry"
-    ],
-    "description": "Returns the number of times a material was not a T3 in a row.",
+    "description": "Your ping to the Wynncraft server",
     "return": "Integer",
     "args": []
+  },
+  {
+    "name": "player_name",
+    "aliases": [],
+    "description": "Your username",
+    "return": "String",
+    "args": []
+  },
+  {
+    "name": "player_uuid",
+    "aliases": [],
+    "description": "Your UUID",
+    "return": "String",
+    "args": []
+  },
+  {
+    "name": "powder_special_charge",
+    "aliases": [],
+    "description": "The percent of charge of your powder special",
+    "return": "CappedValue",
+    "args": []
+  },
+  {
+    "name": "power",
+    "aliases": [],
+    "description": "Returns the first number raised to the power of the second number",
+    "return": "Double",
+    "args": [
+      {
+        "name": "base",
+        "type": "Number",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "exponent",
+        "type": "Number",
+        "required": true,
+        "default": null
+      }
+    ]
   },
   {
     "name": "profession_level",
-    "aliases": [
-      "prof_lvl"
-    ],
+    "aliases": [],
     "description": "The level of the specified profession",
     "return": "Integer",
     "args": [
@@ -3237,9 +3194,7 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
   },
   {
     "name": "profession_percentage",
-    "aliases": [
-      "prof_pct"
-    ],
+    "aliases": [],
     "description": "Your current percentage for the profession specified",
     "return": "Double",
     "args": [
@@ -3253,9 +3208,7 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
   },
   {
     "name": "profession_xp",
-    "aliases": [
-      "prof_xp"
-    ],
+    "aliases": [],
     "description": "The XP of specified profession",
     "return": "CappedValue",
     "args": [
@@ -3269,9 +3222,7 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
   },
   {
     "name": "profession_xp_per_minute",
-    "aliases": [
-      "prof_xpm"
-    ],
+    "aliases": [],
     "description": "The amount of XP you gained for the specified profession in the last minute",
     "return": "String",
     "args": [
@@ -3285,9 +3236,7 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
   },
   {
     "name": "profession_xp_per_minute_raw",
-    "aliases": [
-      "prof_xpm_raw"
-    ],
+    "aliases": [],
     "description": "The raw amount of XP you gained for the specified profession in the last minute",
     "return": "Integer",
     "args": [
@@ -3300,110 +3249,31 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
     ]
   },
   {
-    "name": "current_raid_boss_count",
+    "name": "puppet_count",
     "aliases": [],
-    "description": "How many bosses does the current raid have",
+    "description": "Returns the amount of your currently active puppets",
     "return": "Integer",
     "args": []
   },
   {
-    "name": "current_raid_challenge_count",
+    "name": "puppets_in_time_range",
     "aliases": [],
-    "description": "How many challenges does the current raid have",
+    "description": "Returns the amount of your currently active puppets that are within specified time range",
     "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "current_raid_damage",
-    "aliases": [
-      "raid_damage"
-    ],
-    "description": "How much damage have you dealt in the current raid",
-    "return": "Long",
-    "args": []
-  },
-  {
-    "name": "current_raid",
-    "aliases": [
-      "raid"
-    ],
-    "description": "The name of the raid you are currently in",
-    "return": "String",
-    "args": []
-  },
-  {
-    "name": "current_raid_room_damage",
-    "aliases": [],
-    "description": "How much damage have you dealt in the current raid room",
-    "return": "Long",
-    "args": []
-  },
-  {
-    "name": "current_raid_room_name",
-    "aliases": [],
-    "description": "The name of the challenge raid room you are currently in",
-    "return": "String",
-    "args": []
-  },
-  {
-    "name": "current_raid_room_start",
-    "aliases": [],
-    "description": "The time when the current raid room started",
-    "return": "Time",
-    "args": []
-  },
-  {
-    "name": "current_raid_room_time",
-    "aliases": [],
-    "description": "How long you have been in the current raid room for in milliseconds",
-    "return": "Long",
-    "args": []
-  },
-  {
-    "name": "current_raid_start",
-    "aliases": [
-      "raid_start"
-    ],
-    "description": "The time when the current raid started",
-    "return": "Time",
-    "args": []
-  },
-  {
-    "name": "current_raid_time",
-    "aliases": [
-      "raid_time"
-    ],
-    "description": "How long you have been in the current raid for in milliseconds",
-    "return": "Long",
-    "args": []
-  },
-  {
-    "name": "dry_aspects",
-    "aliases": [],
-    "description": "Dry Aspects",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "dry_raid_reward_pulls",
-    "aliases": [],
-    "description": "Dry Raid Reward Pulls",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "dry_raids_aspects",
-    "aliases": [],
-    "description": "Dry Raids Aspects",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "dry_raids_tomes",
-    "aliases": [],
-    "description": "Dry Raids Tomes",
-    "return": "Integer",
-    "args": []
+    "args": [
+      {
+        "name": "min",
+        "type": "Integer",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "max",
+        "type": "Integer",
+        "required": true,
+        "default": null
+      }
+    ]
   },
   {
     "name": "raid_challenges",
@@ -3449,9 +3319,7 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
   },
   {
     "name": "raid_personal_best_time",
-    "aliases": [
-      "raid_pb"
-    ],
+    "aliases": [],
     "description": "The fastest time taken to beat the specified raid in milliseconds",
     "return": "Long",
     "args": [
@@ -3541,20 +3409,27 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
     ]
   },
   {
-    "name": "specific_raid_runs_since",
+    "name": "rainbow_shader",
     "aliases": [],
-    "description": "The total amount of specified raid you ran in last specified days",
-    "return": "Integer",
+    "description": "Returns color value that triggers Wynncraft's rainbow text shader",
+    "return": "CustomColor",
+    "args": []
+  },
+  {
+    "name": "random",
+    "aliases": [],
+    "description": "Random number between minimum and maximum (excludes max)",
+    "return": "Double",
     "args": [
       {
-        "name": "raidName",
-        "type": "String",
+        "name": "min",
+        "type": "Number",
         "required": true,
         "default": null
       },
       {
-        "name": "sinceDays",
-        "type": "Integer",
+        "name": "max",
+        "type": "Number",
         "required": true,
         "default": null
       }
@@ -3562,9 +3437,7 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
   },
   {
     "name": "range_high",
-    "aliases": [
-      "high"
-    ],
+    "aliases": [],
     "description": "The high value of the range",
     "return": "Integer",
     "args": [
@@ -3578,9 +3451,7 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
   },
   {
     "name": "range_low",
-    "aliases": [
-      "low"
-    ],
+    "aliases": [],
     "description": "The low value of the range",
     "return": "Integer",
     "args": [
@@ -3613,20 +3484,19 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
     ]
   },
   {
-    "name": "friends",
+    "name": "regex_find",
     "aliases": [],
-    "description": "Number of friends online",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "is_friend",
-    "aliases": [],
-    "description": "Whether specified player is your friend or not",
+    "description": "Checks if the given regex finds the given string",
     "return": "Boolean",
     "args": [
       {
-        "name": "player",
+        "name": "source",
+        "type": "String",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "regex",
         "type": "String",
         "required": true,
         "default": null
@@ -3634,13 +3504,19 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
     ]
   },
   {
-    "name": "is_party_member",
+    "name": "regex_match",
     "aliases": [],
-    "description": "Whether specified player is in your party",
+    "description": "Checks if the given regex matches the given string",
     "return": "Boolean",
     "args": [
       {
-        "name": "player",
+        "name": "source",
+        "type": "String",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "regex",
         "type": "String",
         "required": true,
         "default": null
@@ -3648,71 +3524,143 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
     ]
   },
   {
-    "name": "party_leader",
+    "name": "regex_replace",
     "aliases": [],
-    "description": "The name of the party leader",
+    "description": "Replaces all matches of the given regex with the given replacement",
     "return": "String",
-    "args": []
-  },
-  {
-    "name": "party_members",
-    "aliases": [],
-    "description": "Number of party members",
-    "return": "Integer",
     "args": [
       {
-        "name": "includeOffline",
-        "type": "Boolean",
-        "required": false,
-        "default": "true"
+        "name": "source",
+        "type": "String",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "regex",
+        "type": "String",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "replacement",
+        "type": "String",
+        "required": true,
+        "default": null
       }
     ]
   },
   {
-    "name": "player_name",
+    "name": "remaining",
     "aliases": [],
-    "description": "Your username",
-    "return": "String",
-    "args": []
+    "description": "The difference between cap and current value",
+    "return": "Integer",
+    "args": [
+      {
+        "name": "capped",
+        "type": "CappedValue",
+        "required": true,
+        "default": null
+      }
+    ]
   },
   {
-    "name": "wynntils_role",
+    "name": "repeat",
     "aliases": [],
-    "description": "Your Wynntils role",
+    "description": "Repeats the given string the specified amount of times",
     "return": "String",
-    "args": []
+    "args": [
+      {
+        "name": "value",
+        "type": "String",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "count",
+        "type": "Integer",
+        "required": true,
+        "default": null
+      }
+    ]
   },
   {
-    "name": "arrow_shield_count",
-    "aliases": [
-      "arrow_shield"
-    ],
-    "description": "The number of arrow shield charges you have",
-    "return": "Integer",
-    "args": []
+    "name": "round",
+    "aliases": [],
+    "description": "Rounds a number to the specified number of decimals",
+    "return": "Double",
+    "args": [
+      {
+        "name": "value",
+        "type": "Number",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "decimals",
+        "type": "Integer",
+        "required": true,
+        "default": null
+      }
+    ]
   },
   {
-    "name": "guardian_angels_count",
-    "aliases": [
-      "guardian_angels"
-    ],
-    "description": "The number of guardian angel charges you have",
-    "return": "Integer",
-    "args": []
+    "name": "saturation_shift",
+    "aliases": [],
+    "description": "Shifts the saturation of provided color",
+    "return": "CustomColor",
+    "args": [
+      {
+        "name": "color",
+        "type": "CustomColor",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "degree",
+        "type": "Number",
+        "required": true,
+        "default": null
+      }
+    ]
   },
   {
-    "name": "mantle_shield_count",
-    "aliases": [
-      "mantle_shield"
-    ],
-    "description": "The number of mantle shield charges you have",
-    "return": "Integer",
-    "args": []
+    "name": "seconds_between",
+    "aliases": [],
+    "description": "The number of seconds between two Times, negative if the first is after the second",
+    "return": "Long",
+    "args": [
+      {
+        "name": "first",
+        "type": "Time",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "second",
+        "type": "Time",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "seconds_since",
+    "aliases": [],
+    "description": "The number of seconds that has passed since a given Time, negative if the time is in the future",
+    "return": "Long",
+    "args": [
+      {
+        "name": "time",
+        "type": "Time",
+        "required": true,
+        "default": null
+      }
+    ]
   },
   {
     "name": "shaman_mask",
     "aliases": [],
-    "description": "What shaman mask you are currently wearing",
+    "description": "What shaman mask you are currently wearing. Full names: None, Lunatic, Fanatic, Heretic, Awakened. Short names: None, L, F, H, A",
     "return": "String",
     "args": [
       {
@@ -3787,12 +3735,105 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
   },
   {
     "name": "shield_type_name",
-    "aliases": [
-      "shield_type"
-    ],
-    "description": "The name of the current active shield type, currently one of \"Arrow\", \"Guardian Angels\" or \"Mantle\"",
+    "aliases": [],
+    "description": "The name of the current active shield type, currently one of Arrow, Guardian Angels or Mantle",
     "return": "String",
     "args": []
+  },
+  {
+    "name": "shine_shader",
+    "aliases": [],
+    "description": "Returns color value that triggers Wynncraft's shine text shader",
+    "return": "CustomColor",
+    "args": []
+  },
+  {
+    "name": "snake_count",
+    "aliases": [],
+    "description": "Returns the amount of your currently active snakes",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "specific_raid_runs_since",
+    "aliases": [],
+    "description": "The total amount of specified raid you ran in last specified days",
+    "return": "Integer",
+    "args": [
+      {
+        "name": "raidName",
+        "type": "String",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "sinceDays",
+        "type": "Integer",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "spell_name_from_direction",
+    "aliases": [],
+    "description": "The name of a spell from your class given direction.",
+    "return": "String",
+    "args": [
+      {
+        "name": "spellDirection",
+        "type": "String",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "class",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "spell_name_from_number",
+    "aliases": [],
+    "description": "The name of a spell for specific class given its number",
+    "return": "String",
+    "args": [
+      {
+        "name": "spellNumber",
+        "type": "Integer",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "class",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "sprint",
+    "aliases": [],
+    "description": "Your remaining sprint stamina",
+    "return": "CappedValue",
+    "args": []
+  },
+  {
+    "name": "square_root",
+    "aliases": [],
+    "description": "Returns the square root of a number",
+    "return": "Double",
+    "args": [
+      {
+        "name": "value",
+        "type": "Number",
+        "required": true,
+        "default": null
+      }
+    ]
   },
   {
     "name": "statistics_average",
@@ -3996,9 +4037,7 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
   },
   {
     "name": "status_effect_active",
-    "aliases": [
-      "contains_effect"
-    ],
+    "aliases": [],
     "description": "Checks if an effect is contained in the status effect list",
     "return": "Boolean",
     "args": [
@@ -4060,92 +4099,161 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
     "args": []
   },
   {
-    "name": "aura_timer",
+    "name": "stopwatch_hours",
     "aliases": [],
-    "description": "The time left before aura strikes",
-    "return": "Double",
+    "description": "The number in the hours position on the stopwatch",
+    "return": "Integer",
     "args": []
   },
   {
-    "name": "current_tower_attack_speed",
+    "name": "stopwatch_milliseconds",
     "aliases": [],
-    "description": "The attack speed of the current tower you are attacking",
-    "return": "Double",
+    "description": "The number in the milliseconds position on the stopwatch",
+    "return": "Integer",
     "args": []
   },
   {
-    "name": "current_tower_damage",
+    "name": "stopwatch_minutes",
     "aliases": [],
-    "description": "The damage of the current tower you are attacking",
-    "return": "RangedValue",
+    "description": "The number in the minutes position on the stopwatch",
+    "return": "Integer",
     "args": []
   },
   {
-    "name": "current_tower_defense",
+    "name": "stopwatch_running",
     "aliases": [],
-    "description": "The defense of the current tower you are attacking",
-    "return": "Double",
+    "description": "Checks if the stopwatch is currently running",
+    "return": "Boolean",
     "args": []
   },
   {
-    "name": "current_tower_health",
+    "name": "stopwatch_seconds",
     "aliases": [],
-    "description": "The health of the current tower you are attacking",
-    "return": "Long",
+    "description": "The number in the seconds position on the stopwatch",
+    "return": "Integer",
     "args": []
   },
   {
-    "name": "estimated_time_to_finish_war",
+    "name": "stopwatch_zero",
     "aliases": [],
-    "description": "The estimated time to finish the war you are currently in",
-    "return": "Long",
+    "description": "Checks if the stopwatch is currently at zero",
+    "return": "Boolean",
     "args": []
   },
   {
-    "name": "estimated_war_end",
+    "name": "string",
     "aliases": [],
-    "description": "The estimated time to the current war will end",
-    "return": "Time",
-    "args": []
+    "description": "Convert a number to a string",
+    "return": "String",
+    "args": [
+      {
+        "name": "value",
+        "type": "Number",
+        "required": true,
+        "default": null
+      }
+    ]
   },
   {
-    "name": "initial_tower_attack_speed",
+    "name": "string_contains",
     "aliases": [],
-    "description": "The attack speed of the initial tower you are attacking",
-    "return": "Double",
-    "args": []
-  },
-  {
-    "name": "initial_tower_damage",
-    "aliases": [],
-    "description": "The damage of the initial tower you are attacking",
-    "return": "RangedValue",
-    "args": []
-  },
-  {
-    "name": "initial_tower_defense",
-    "aliases": [],
-    "description": "The defense of the initial tower you are attacking",
-    "return": "Double",
-    "args": []
-  },
-  {
-    "name": "initial_tower_health",
-    "aliases": [],
-    "description": "The health of the initial tower you are attacking",
-    "return": "Long",
-    "args": []
-  },
-  {
-    "name": "is_territory_queued",
-    "aliases": [
-      "is_queued"
-    ],
-    "description": "Is the specified territory queued for an attack?",
+    "description": "Checks if a string contains another string",
     "return": "Boolean",
     "args": [
       {
-        "name": "territoryName",
+        "name": "source",
+        "type": "String",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "substring",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "string_equals",
+    "aliases": [],
+    "description": "Checks if two strings are equal",
+    "return": "Boolean",
+    "args": [
+      {
+        "name": "first",
+        "type": "String",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "second",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "styled_text",
+    "aliases": [],
+    "description": "Converts a coded string into StyledText",
+    "return": "StyledText",
+    "args": [
+      {
+        "name": "value",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "subtract",
+    "aliases": [],
+    "description": "Subtracts the second number from the first number",
+    "return": "Double",
+    "args": [
+      {
+        "name": "first",
+        "type": "Number",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "second",
+        "type": "Number",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "targeted_mob_debuff_value",
+    "aliases": [],
+    "description": "Returns the value associated with the given debuff on the targeted mob",
+    "return": "Integer",
+    "args": [
+      {
+        "name": "range",
+        "type": "Double",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "horizontalDegrees",
+        "type": "Double",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "verticalDegrees",
+        "type": "Double",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "debuffName",
         "type": "String",
         "required": true,
         "default": null
@@ -4167,133 +4275,34 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
     ]
   },
   {
-    "name": "time_in_war",
+    "name": "teleport_scroll_charges",
     "aliases": [],
-    "description": "The time you have been in the war you are currently in",
-    "return": "Long",
-    "args": []
-  },
-  {
-    "name": "tower_dps",
-    "aliases": [],
-    "description": "The DPS of the tower you are currently attacking",
-    "return": "RangedValue",
-    "args": []
-  },
-  {
-    "name": "tower_effective_hp",
-    "aliases": [],
-    "description": "The effective HP of the tower you are currently attacking",
-    "return": "Long",
-    "args": []
-  },
-  {
-    "name": "tower_owner",
-    "aliases": [],
-    "description": "The owner of the tower you are attacking",
-    "return": "String",
-    "args": []
-  },
-  {
-    "name": "tower_territory",
-    "aliases": [],
-    "description": "The territory of the tower you are attacking",
-    "return": "String",
-    "args": []
-  },
-  {
-    "name": "volley_timer",
-    "aliases": [],
-    "description": "The time left before volley strikes",
-    "return": "Double",
-    "args": []
-  },
-  {
-    "name": "war_start",
-    "aliases": [],
-    "description": "The time the current war started",
-    "return": "Time",
-    "args": []
-  },
-  {
-    "name": "wars_since",
-    "aliases": [],
-    "description": "The number of wars in the specified time period",
-    "return": "Long",
-    "args": [
-      {
-        "name": "sinceDays",
-        "type": "Integer",
-        "required": false,
-        "default": "7"
-      }
-    ]
-  },
-  {
-    "name": "annihilation_dry_count",
-    "aliases": [
-      "dry_annis,dry_anni_count"
-    ],
-    "description": "Get the number of annihilation world events completed that has not contained a corrupted cache",
+    "description": "Number of scroll charges you have remaining. Returns -1 if no scroll is present.",
     "return": "Integer",
     "args": []
   },
   {
-    "name": "annihilation_sun_progress",
-    "aliases": [
-      "sun_progress"
-    ],
-    "description": "The progress towards a new sun being created during the Annihilation battle",
-    "return": "CappedValue",
+    "name": "teleport_scroll_recharge_timer",
+    "aliases": [],
+    "description": "Seconds until the next teleport scroll charge. Returns -1 if no timer is active.",
+    "return": "Integer",
     "args": []
   },
   {
-    "name": "current_world_event",
+    "name": "ticks",
     "aliases": [],
-    "description": "Get the name of the world event you are currently in",
-    "return": "String",
+    "description": "The number of ticks since world start",
+    "return": "Long",
     "args": []
   },
   {
-    "name": "current_world_event_start_time",
+    "name": "ticks_since_last_spell",
     "aliases": [],
-    "description": "Get the start time of the current world event",
-    "return": "Time",
-    "args": []
-  },
-  {
-    "name": "world_event_start_time",
-    "aliases": [],
-    "description": "Get the start time of the given world event",
-    "return": "Time",
+    "description": "The number of ticks since the last spell was cast",
+    "return": "Integer",
     "args": [
       {
-        "name": "worldEventName",
-        "type": "String",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "current_territory",
-    "aliases": [
-      "territory"
-    ],
-    "description": "The territory you are currently in",
-    "return": "String",
-    "args": []
-  },
-  {
-    "name": "current_territory_owner",
-    "aliases": [
-      "territory_owner"
-    ],
-    "description": "The name or prefix of the guild that owns the territory you are currently in",
-    "return": "String",
-    "args": [
-      {
-        "name": "prefixOnly",
+        "name": "burst",
         "type": "Boolean",
         "required": false,
         "default": "false"
@@ -4301,296 +4310,104 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
     ]
   },
   {
-    "name": "current_world",
-    "aliases": [
-      "world"
-    ],
-    "description": "Get the name of the current world, such as \"WC32\", may be <unknown> or <not on world>",
-    "return": "String",
-    "args": []
-  },
-  {
-    "name": "gathering_totem_count",
+    "name": "ticks_since_specific_spell",
     "aliases": [],
-    "description": "The number of gathering totems around you",
+    "description": "Amount of ticks since you cast a specific spell. Returns -1 if spell could not be found.",
     "return": "Integer",
+    "args": [
+      {
+        "name": "spellName",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "time",
+    "aliases": [],
+    "description": "A Time from a timestamp",
+    "return": "Time",
+    "args": [
+      {
+        "name": "timestamp",
+        "type": "Number",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "time_in_war",
+    "aliases": [],
+    "description": "The time you have been in the war you are currently in",
+    "return": "Long",
     "args": []
   },
   {
-    "name": "gathering_totem_distance",
+    "name": "time_offset",
     "aliases": [],
-    "description": "The distance to the gathering totem",
-    "return": "Double",
+    "description": "A new Time offset by the specified amount",
+    "return": "Time",
     "args": [
       {
-        "name": "totemNumber",
-        "type": "Integer",
+        "name": "time",
+        "type": "Time",
         "required": true,
         "default": null
-      }
-    ]
-  },
-  {
-    "name": "gathering_totem",
-    "aliases": [],
-    "description": "The location of the gathering totem",
-    "return": "Location",
-    "args": [
-      {
-        "name": "totemNumber",
-        "type": "Integer",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "gathering_totem_owner",
-    "aliases": [],
-    "description": "The name of the player who placed the gathering totem",
-    "return": "String",
-    "args": [
-      {
-        "name": "totemNumber",
-        "type": "Integer",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "gathering_totem_time_left",
-    "aliases": [],
-    "description": "The time left on the gathering totem",
-    "return": "String",
-    "args": [
-      {
-        "name": "totemNumber",
-        "type": "Integer",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "in_mapped_area",
-    "aliases": [],
-    "description": "Are you currently inside a mapped area?",
-    "return": "Boolean",
-    "args": [
-      {
-        "name": "width",
-        "type": "Number",
-        "required": false,
-        "default": "130"
       },
       {
-        "name": "height",
+        "name": "offset",
         "type": "Number",
-        "required": false,
-        "default": "130"
-      },
-      {
-        "name": "scale",
-        "type": "Number",
-        "required": false,
-        "default": "1"
-      }
-    ]
-  },
-  {
-    "name": "in_stream",
-    "aliases": [
-      "streamer"
-    ],
-    "description": "Are you currently in streamer mode?",
-    "return": "Boolean",
-    "args": []
-  },
-  {
-    "name": "mob_totem_count",
-    "aliases": [],
-    "description": "The number of mob totems around you",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "mob_totem_distance",
-    "aliases": [],
-    "description": "The distance to the mob totem",
-    "return": "Double",
-    "args": [
-      {
-        "name": "totemNumber",
-        "type": "Integer",
         "required": true,
         "default": null
       }
     ]
   },
   {
-    "name": "mob_totem",
+    "name": "time_since_last_damage_dealt",
     "aliases": [],
-    "description": "The location of the mob totem",
-    "return": "Location",
+    "description": "The time, in milliseconds, since you last damaged a mob",
+    "return": "Long",
+    "args": []
+  },
+  {
+    "name": "time_since_last_kill",
+    "aliases": [],
+    "description": "The time, in milliseconds, since you last killed a mob",
+    "return": "Long",
     "args": [
       {
-        "name": "totemNumber",
-        "type": "Integer",
+        "name": "includeShared",
+        "type": "Boolean",
+        "required": false,
+        "default": "false"
+      }
+    ]
+  },
+  {
+    "name": "time_string",
+    "aliases": [],
+    "description": "This Time as a string",
+    "return": "String",
+    "args": [
+      {
+        "name": "time",
+        "type": "Time",
         "required": true,
         "default": null
       }
     ]
   },
   {
-    "name": "mob_totem_owner",
+    "name": "timestamp",
     "aliases": [],
-    "description": "The name of the player who placed the mob totem",
-    "return": "String",
+    "description": "The timestamp this Time represents",
+    "return": "Long",
     "args": [
       {
-        "name": "totemNumber",
-        "type": "Integer",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "mob_totem_time_left",
-    "aliases": [],
-    "description": "The time left on the mob totem",
-    "return": "String",
-    "args": [
-      {
-        "name": "totemNumber",
-        "type": "Integer",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "newest_world",
-    "aliases": [],
-    "description": "The newest world there is on Wynncraft",
-    "return": "String",
-    "args": []
-  },
-  {
-    "name": "ping",
-    "aliases": [],
-    "description": "Your ping to the Wynncraft server",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "token_gatekeeper_count",
-    "aliases": [
-      "token_count"
-    ],
-    "description": "The number of tokens gatekeepers present",
-    "return": "Integer",
-    "args": []
-  },
-  {
-    "name": "token_gatekeeper_deposited",
-    "aliases": [
-      "token_dep"
-    ],
-    "description": "The number of tokens deposited to a gatekeeper",
-    "return": "CappedValue",
-    "args": [
-      {
-        "name": "gatekeeperNumber",
-        "type": "Integer",
-        "required": false,
-        "default": "0"
-      }
-    ]
-  },
-  {
-    "name": "token_gatekeeper",
-    "aliases": [
-      "token"
-    ],
-    "description": "The number of tokens collected to get past a gatekeeper",
-    "return": "CappedValue",
-    "args": [
-      {
-        "name": "gatekeeperNumber",
-        "type": "Integer",
-        "required": false,
-        "default": "0"
-      }
-    ]
-  },
-  {
-    "name": "token_gatekeeper_type",
-    "aliases": [
-      "token_type"
-    ],
-    "description": "The type of tokens needed to get past a gatekeeper",
-    "return": "String",
-    "args": [
-      {
-        "name": "gatekeeperNumber",
-        "type": "Integer",
-        "required": false,
-        "default": "0"
-      }
-    ]
-  },
-  {
-    "name": "world_state",
-    "aliases": [],
-    "description": "The current world state. One of NOT_CONNECTED, CONNECTING, INTERIM, HUB, CHARACTER_SELECTION, WORLD",
-    "return": "String",
-    "args": []
-  },
-  {
-    "name": "world_uptime",
-    "aliases": [
-      "uptime,current_world_uptime"
-    ],
-    "description": "The time the world has been up for",
-    "return": "String",
-    "args": [
-      {
-        "name": "worldName",
-        "type": "String",
-        "required": false,
-        "default": ""
-      }
-    ]
-  },
-  {
-    "name": "transcribe_gavellian",
-    "aliases": [
-      "gavellian"
-    ],
-    "description": "Transcribe your given input into Gavellian.",
-    "return": "String",
-    "args": [
-      {
-        "name": "gavellian",
-        "type": "String",
-        "required": true,
-        "default": null
-      }
-    ]
-  },
-  {
-    "name": "transcribe_wynnic",
-    "aliases": [
-      "wynnic"
-    ],
-    "description": "Transcribe your given input into Wynnic.",
-    "return": "String",
-    "args": [
-      {
-        "name": "wynnic",
-        "type": "String",
+        "name": "time",
+        "type": "Time",
         "required": true,
         "default": null
       }
@@ -4643,6 +4460,582 @@ export const WYNNTILS_FUNCS: WynntilsFn[] = [
       {
         "name": "text",
         "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "to_hex_string",
+    "aliases": [],
+    "description": "Returns a hex string representation of provided color",
+    "return": "String",
+    "args": [
+      {
+        "name": "color",
+        "type": "CustomColor",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "to_roman_numerals",
+    "aliases": [],
+    "description": "Converts provided number to the equivalent in roman numerals",
+    "return": "String",
+    "args": [
+      {
+        "name": "number",
+        "type": "Integer",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "token_gatekeeper",
+    "aliases": [],
+    "description": "The number of tokens collected to get past a gatekeeper",
+    "return": "CappedValue",
+    "args": [
+      {
+        "name": "gatekeeperNumber",
+        "type": "Integer",
+        "required": false,
+        "default": "0"
+      }
+    ]
+  },
+  {
+    "name": "token_gatekeeper_count",
+    "aliases": [],
+    "description": "The number of tokens gatekeepers present",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "token_gatekeeper_deposited",
+    "aliases": [],
+    "description": "The number of tokens deposited to a gatekeeper",
+    "return": "CappedValue",
+    "args": [
+      {
+        "name": "gatekeeperNumber",
+        "type": "Integer",
+        "required": false,
+        "default": "0"
+      }
+    ]
+  },
+  {
+    "name": "token_gatekeeper_type",
+    "aliases": [],
+    "description": "The type of tokens needed to get past a gatekeeper",
+    "return": "String",
+    "args": [
+      {
+        "name": "gatekeeperNumber",
+        "type": "Integer",
+        "required": false,
+        "default": "0"
+      }
+    ]
+  },
+  {
+    "name": "total_area_damage",
+    "aliases": [],
+    "description": "The sum of damage you dealt in your area in the last specified seconds",
+    "return": "Double",
+    "args": [
+      {
+        "name": "seconds",
+        "type": "Integer",
+        "required": false,
+        "default": "10"
+      }
+    ]
+  },
+  {
+    "name": "tower_dps",
+    "aliases": [],
+    "description": "The DPS of the tower you are currently attacking",
+    "return": "RangedValue",
+    "args": []
+  },
+  {
+    "name": "tower_effective_hp",
+    "aliases": [],
+    "description": "The effective HP of the tower you are currently attacking",
+    "return": "Long",
+    "args": []
+  },
+  {
+    "name": "tower_owner",
+    "aliases": [],
+    "description": "The owner of the tower you are attacking",
+    "return": "String",
+    "args": []
+  },
+  {
+    "name": "tower_territory",
+    "aliases": [],
+    "description": "The territory of the tower you are attacking",
+    "return": "String",
+    "args": []
+  },
+  {
+    "name": "transcribe_gavellian",
+    "aliases": [],
+    "description": "Transcribe your given input into Gavellian.",
+    "return": "String",
+    "args": [
+      {
+        "name": "gavellian",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "transcribe_wynnic",
+    "aliases": [],
+    "description": "Transcribe your given input into Wynnic.",
+    "return": "String",
+    "args": [
+      {
+        "name": "wynnic",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "value",
+    "aliases": [],
+    "description": "The value of this named value",
+    "return": "Double",
+    "args": [
+      {
+        "name": "named",
+        "type": "NamedValue",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "volley_timer",
+    "aliases": [],
+    "description": "The time left before volley strikes",
+    "return": "Double",
+    "args": []
+  },
+  {
+    "name": "war_start",
+    "aliases": [],
+    "description": "The time the current war started",
+    "return": "Time",
+    "args": []
+  },
+  {
+    "name": "wars_since",
+    "aliases": [],
+    "description": "The number of wars in the specified time period",
+    "return": "Long",
+    "args": [
+      {
+        "name": "sinceDays",
+        "type": "Integer",
+        "required": false,
+        "default": "7"
+      }
+    ]
+  },
+  {
+    "name": "with_atlas_sprite_font",
+    "aliases": [],
+    "description": "Applies an atlas sprite font to every part of a Styled Text",
+    "return": "StyledText",
+    "args": [
+      {
+        "name": "value",
+        "type": "StyledText",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "atlas",
+        "type": "String",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "sprite",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "with_bold",
+    "aliases": [],
+    "description": "Applies bold to Styled Text",
+    "return": "StyledText",
+    "args": [
+      {
+        "name": "value",
+        "type": "StyledText",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "isBold",
+        "type": "Boolean",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "with_color",
+    "aliases": [],
+    "description": "Applies a parent color to StyledText without overriding explicitly-colored parts",
+    "return": "StyledText",
+    "args": [
+      {
+        "name": "value",
+        "type": "StyledText",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "color",
+        "type": "CustomColor",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "with_italic",
+    "aliases": [],
+    "description": "Applies italic to Styled Text",
+    "return": "StyledText",
+    "args": [
+      {
+        "name": "value",
+        "type": "StyledText",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "isItalic",
+        "type": "Boolean",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "with_obfuscated",
+    "aliases": [],
+    "description": "Applies obfuscated to Styled Text",
+    "return": "StyledText",
+    "args": [
+      {
+        "name": "value",
+        "type": "StyledText",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "isObfuscated",
+        "type": "Boolean",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "with_player_sprite_font",
+    "aliases": [],
+    "description": "Applies a player sprite font to every part of a Styled Text",
+    "return": "StyledText",
+    "args": [
+      {
+        "name": "value",
+        "type": "StyledText",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "uuid",
+        "type": "String",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "hat",
+        "type": "Boolean",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "with_resource_font",
+    "aliases": [],
+    "description": "Applies a resource font to every part of a StyledText",
+    "return": "StyledText",
+    "args": [
+      {
+        "name": "value",
+        "type": "StyledText",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "font",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "with_shadow_color",
+    "aliases": [],
+    "description": "Applies a parent shadow color to StyledText without overriding explicitly-shadowed parts",
+    "return": "StyledText",
+    "args": [
+      {
+        "name": "value",
+        "type": "StyledText",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "color",
+        "type": "CustomColor",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "with_strikethrough",
+    "aliases": [],
+    "description": "Applies strikethrough to Styled Text",
+    "return": "StyledText",
+    "args": [
+      {
+        "name": "value",
+        "type": "StyledText",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "isStrikethrough",
+        "type": "Boolean",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "with_underlined",
+    "aliases": [],
+    "description": "Applies underlined to Styled Text",
+    "return": "StyledText",
+    "args": [
+      {
+        "name": "value",
+        "type": "StyledText",
+        "required": true,
+        "default": null
+      },
+      {
+        "name": "isUnderlined",
+        "type": "Boolean",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "world_event_start_time",
+    "aliases": [],
+    "description": "Get the start time of the given world event",
+    "return": "Time",
+    "args": [
+      {
+        "name": "worldEventName",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "world_state",
+    "aliases": [],
+    "description": "The current world state. One of NOT_CONNECTED, CONNECTING, INTERIM, HUB, CHARACTER_SELECTION, WORLD",
+    "return": "String",
+    "args": []
+  },
+  {
+    "name": "world_uptime",
+    "aliases": [],
+    "description": "The time the world has been up for",
+    "return": "String",
+    "args": [
+      {
+        "name": "worldName",
+        "type": "String",
+        "required": false,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "wynncraft_shader",
+    "aliases": [],
+    "description": "Returns the color that triggers provided shader",
+    "return": "CustomColor",
+    "args": [
+      {
+        "name": "shaderName",
+        "type": "String",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "wynncraft_version",
+    "aliases": [],
+    "description": "Wynncraft version of the world you are playing on",
+    "return": "String",
+    "args": []
+  },
+  {
+    "name": "wynntils_role",
+    "aliases": [],
+    "description": "Your Wynntils role",
+    "return": "String",
+    "args": []
+  },
+  {
+    "name": "wynntils_version",
+    "aliases": [],
+    "description": "Wynntils version you are now playing on",
+    "return": "String",
+    "args": []
+  },
+  {
+    "name": "x",
+    "aliases": [],
+    "description": "Extracts the X coordinate from a location",
+    "return": "Integer",
+    "args": [
+      {
+        "name": "location",
+        "type": "Location",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "xp",
+    "aliases": [],
+    "description": "Your current XP in this level expressed as points (formatted)",
+    "return": "String",
+    "args": []
+  },
+  {
+    "name": "xp_overflow",
+    "aliases": [],
+    "description": "The amount of XP earned after reaching the maximum level",
+    "return": "Long",
+    "args": []
+  },
+  {
+    "name": "xp_pct",
+    "aliases": [],
+    "description": "Your current XP in this level expressed percentage of level up requirement",
+    "return": "Double",
+    "args": []
+  },
+  {
+    "name": "xp_per_minute",
+    "aliases": [],
+    "description": "The amount of experience you gain per minute, formatted.",
+    "return": "String",
+    "args": []
+  },
+  {
+    "name": "xp_per_minute_raw",
+    "aliases": [],
+    "description": "The amount of experience you gain per minute, raw amount.",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "xp_percentage_per_minute",
+    "aliases": [],
+    "description": "The amount of experience you gain per minute, percentage.",
+    "return": "Double",
+    "args": []
+  },
+  {
+    "name": "xp_raw",
+    "aliases": [],
+    "description": "Your current XP in this level expressed as points (raw number)",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "xp_req",
+    "aliases": [],
+    "description": "XP points needed to level up (formatted)",
+    "return": "String",
+    "args": []
+  },
+  {
+    "name": "xp_req_raw",
+    "aliases": [],
+    "description": "XP points needed to level up (raw number)",
+    "return": "Integer",
+    "args": []
+  },
+  {
+    "name": "y",
+    "aliases": [],
+    "description": "Extracts the Y coordinate from a location",
+    "return": "Integer",
+    "args": [
+      {
+        "name": "location",
+        "type": "Location",
+        "required": true,
+        "default": null
+      }
+    ]
+  },
+  {
+    "name": "z",
+    "aliases": [],
+    "description": "Extracts the Z coordinate from a location",
+    "return": "Integer",
+    "args": [
+      {
+        "name": "location",
+        "type": "Location",
         "required": true,
         "default": null
       }
