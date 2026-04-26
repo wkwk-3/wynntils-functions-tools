@@ -4,7 +4,7 @@
   "description": "Wynntils Info boxes language support",
   "version": "1.0.0",
   "engines": {
-    "vscode": "^1.50.0"
+    "vscode": "^1.116.0"
   },
   "author": {
     "name": "Chromium"
@@ -14,7 +14,7 @@
   ],
   "publisher": "TeamWynntils",
   "repository": {
-    "url": "https://github.com/DevChromium/wynntils-functions-tools"
+    "url": "https://github.com/wkwk-3/wynntils-functions-tools"
   },
   "activationEvents": [
     "onLanguage:wynntils",

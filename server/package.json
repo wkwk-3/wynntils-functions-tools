@@ -1,8 +1,13 @@
 {
-  "name": "server",
+  "name": "wynntils-function-tools",
+  "displayName": "Wynntils Function Tools",
   "version": "1.0.0",
+  "publisher": "wkwk-3",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "main": "./out/extension.js",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
